@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Food Chatbot | TeenWell360</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">TeenWell360 ✳</div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/meal-planner">Meal Planner</a>
+            <a href="/budget-buddy">Budget Buddy</a>
+            <a href="/food-games">Food Games</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <p class="tag">🤖 YOUR FOOD ASSISTANT</p>
+            <h1>Ask Away!<br>Food Explorer.</h1>
+            <p>Ask simple questions about food and nutrition.</p>
+        </div>
+
+        <div class="mascot">
+            🤖 🍎 🥑
+            <p>Hey! How can I help?</p>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2>Chat with Food Buddy 💜</h2>
+
+        <div class="card">
+
+            <div id="chatbox">
+                <p><strong>Food Buddy:</strong>
+                Hello! Ask me about healthy foods! 😊</p>
+            </div>
+
+            <input
+                type="text"
+                id="userInput"
+                placeholder="Ask me something..."
+            >
+
+            <button class="btn" onclick="sendMessage()">
+                Send Message ➤
+            </button>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>Made with 💜 by TeenWell360</p>
+    </footer>
+    
+<script>
+function sendMessage() {
+
+    const input = document.getElementById("userInput");
+    const chatbox = document.getElementById("chatbox");
+
+    const originalMessage = input.value.trim();
+    const message = originalMessage.toLowerCase();
+
+    if (!message) return;
+
+    const userText = document.createElement("p");
+    userText.innerHTML = "<strong>You:</strong> ";
+    userText.appendChild(document.createTextNode(originalMessage));
+    chatbox.appendChild(userText);
+
+    let reply = "";
+
+    if (message.includes("hello") || message.includes("hi")) {
+        reply = "Heyyy! 👋 Welcome to TeenWell360! What food topic would you like to explore?";
+    }
+
+    else if (message.includes("protein")) {
+        reply = "🥚 Protein helps your body grow and repair tissues. Try eggs, beans, lentils, milk and nuts.";
+    }
+
+    else if (message.includes("vitamin c")) {
+        reply = "🍊 Vitamin C supports your immune system. Guava, oranges, amla and capsicum are good sources.";
+    }
+
+    else if (message.includes("breakfast")) {
+        reply = "🥞 Breakfast ideas: idli with sambar, oats with banana, vegetable dosa or egg toast.";
+    }
+
+    else if (message.includes("lunch")) {
+        reply = "🍱 Lunch ideas: rice with dal, vegetable pulao, curd rice or chapati with vegetable curry.";
+    }
+
+    else if (message.includes("dinner")) {
+        reply = "🥗 Dinner ideas: vegetable khichdi, chapati with dal, dosa with sambar or vegetable rice.";
+    }
+
+    else if (message.includes("snack")) {
+        reply = "🍎 Snack ideas: seasonal fruits, roasted chickpeas, yogurt, nuts or homemade sandwiches.";
+    }
+
+    else if (message.includes("iron")) {
+        reply = "🥬 Iron is important for healthy blood. Lentils, beans, spinach and fortified cereals can provide iron.";
+    }
+
+    else if (message.includes("calcium")) {
+        reply = "🥛 Calcium supports healthy bones and teeth. Milk, curd, cheese and fortified foods are useful sources.";
+    }
+
+    else if (message.includes("water") || message.includes("hydration")) {
+        reply = "💧 Water helps regulate body temperature and supports digestion. Remember to drink throughout the day.";
+    }
+
+    else if (message.includes("fruit")) {
+        reply = "🍓 Try bananas, apples, oranges, guava and papaya. Different fruits provide different nutrients.";
+    }
+
+    else if (message.includes("vegetable")) {
+        reply = "🥦 Add variety! Carrots, spinach, broccoli, beans and pumpkin provide different vitamins and minerals.";
+    }
+
+    else if (message.includes("budget") || message.includes("cheap")) {
+        reply = "💸 Affordable choices include seasonal vegetables, lentils, rice, eggs and locally available fruits.";
+    }
+
+    else {
+        reply = "🤔 Interesting question! I can help with protein, vitamins, fruits, vegetables, breakfast, lunch, dinner and hydration. Try asking about one of these!";
+    }
+
+    const botText = document.createElement("p");
+    botText.innerHTML = "<strong>Food Buddy:</strong> ";
+    botText.appendChild(document.createTextNode(reply));
+    chatbox.appendChild(botText);
+
+    input.value = "";
+    chatbox.scrollTop = chatbox.scrollHeight;
+}
+</script>
+
+
+</body>
+</html>

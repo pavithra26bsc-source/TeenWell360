@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TeenWell360 | Good Vibes. Great Bites.</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">TeenWell360 ✳</div>
+
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#features">Explore</a>
+            <a href="#about">About</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <p class="tag">💜 YOUR FOOD COMPANION</p>
+
+            <h1>Good Vibes.<br>Great Bites.</h1>
+
+            <p>
+                Discover delicious meals, explore nutrition
+                and find affordable food choices.
+                Your food journey starts here!
+            </p>
+
+            <a href="#features" class="btn">
+                Explore Your Food World →
+            </a>
+
+        </div>
+
+        <div class="mascot">
+            🍓 🥑 🥦
+            <p>Heyyy, Food Explorer! 👋</p>
+        </div>
+
+    </section>
+
+    <section class="features" id="features">
+
+        <h2>What's your food mood? 👀</h2>
+
+        <div class="cards">
+
+           <a href="{{ url_for('meal_planner') }}" class="card">
+    <div class="emoji">🍜</div>
+    <h3>Meal Planner</h3>
+    <p>Discover tasty daily meal ideas.</p>
+</a>
+
+        
+<a href="/budget-buddy" class="card">
+    <div class="emoji">💸</div>
+    <h3>Budget Buddy</h3>
+    <p>Find nutritious food within your budget.</p>
+</a>
+
+
+            <a href="{{ url_for('food_games') }}" class="card">
+    <div class="emoji">🎮</div>
+    <h3>Food Games</h3>
+    <p>Learn nutrition through fun challenges.</p>
+</a>
+
+        <a href="{{ url_for('food_chatbot') }}" class="card">
+    <div class="emoji">🤖</div>
+    <h3>Food Chatbot</h3>
+    <p>Ask questions and explore healthy eating.</p>
+</a>
+
+        </div>
+
+    </section>
+
+    <footer id="about">
+        <p>Made with 💜 for a healthier generation.</p>
+        <p>TeenWell360 © 2026</p>
+    </footer>
+
+</body>
+</html>
