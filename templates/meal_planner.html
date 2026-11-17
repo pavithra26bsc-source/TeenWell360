@@ -151,6 +151,28 @@ href="{{ url_for('static', filename='css/style.css') }}">
     margin: 20px auto;
     max-width: 600px;
     line-height: 1.6;
+}@media (max-width: 600px) {
+    .meal-hero {
+        padding: 25px 15px;
+    }
+
+    .meal-mascots {
+        padding: 18px;
+        font-size: 32px;
+    }
+
+    .meal-result-card {
+        padding: 18px;
+    }
+
+    .meal-result-card p {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    button {
+        width: 100%;
+    }
 }
 </style>
 </head>
@@ -209,7 +231,11 @@ href="{{ url_for('static', filename='css/style.css') }}">
     🌸 Every meal is a chance to enjoy variety. Choose foods you like!
 </p>
     <div class="cards">
-
+<div class="meal-reminder">
+    🌈 <strong>Remember:</strong>
+    Your meal plan is a guide, not a strict rule.
+    Enjoy different foods and adjust it to your preferences!
+</div>
         <div class="card">
             <div class="emoji">🥞</div>
             <h3>Breakfast</h3>
