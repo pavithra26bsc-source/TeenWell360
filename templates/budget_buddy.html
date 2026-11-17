@@ -1,3 +1,217 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Budget Buddy | TeenWell360</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f8f4ff;
+    color: #302344;
+}
+
+.navbar {
+    background: #7044a5;
+    color: white;
+    padding: 18px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.logo {
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin: 5px;
+    font-size: 14px;
+}
+
+.hero {
+    text-align: center;
+    padding: 35px 15px;
+    background: #eadcff;
+}
+
+.hero h1 {
+    color: #7044a5;
+    font-size: 35px;
+}
+
+.container {
+    max-width: 850px;
+    margin: 25px auto;
+    padding: 15px;
+}
+
+.card {
+    background: white;
+    padding: 23px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 12px #ddd;
+}
+
+h2 {
+    color: #7044a5;
+}
+
+label {
+    display: block;
+    margin: 15px 0 8px;
+    font-weight: bold;
+}
+
+input, select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #c8b6df;
+    border-radius: 9px;
+    font-size: 16px;
+}
+
+button {
+    background: #7044a5;
+    color: white;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 18px;
+    width: 100%;
+}
+
+button:hover {
+    background: #542d87;
+}
+
+.result {
+    display: none;
+    margin-top: 20px;
+}
+
+.meal {
+    background: #f5efff;
+    padding: 13px;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+.amount {
+    color: #7044a5;
+    font-weight: bold;
+}
+
+.note {
+    font-size: 13px;
+    color: #62576e;
+    line-height: 1.6;
+}
+
+footer {
+    text-align: center;
+    background: #7044a5;
+    color: white;
+    padding: 18px;
+    margin-top: 35px;
+}
+
+@media(max-width: 600px) {
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .navbar {
+        flex-direction: column;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="logo">TeenWell360 ✳</div>
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/meal-planner">Meal Planner</a>
+        <a href="/food-games">Food Games</a>
+        <a href="/food-chatbot">Chatbot</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <p>💜 YOUR SMART FOOD COMPANION</p>
+    <h1>Budget Buddy</h1>
+    <p>Eat Smart. Spend Smart!</p>
+    <p>Discover affordable and nutritious meal ideas.</p>
+</section>
+
+<div class="container">
+
+    <section class="card">
+        <h2>💰 Plan Your Food Budget</h2>
+
+        <label for="budget">Enter your daily budget (₹)</label>
+        <input type="number" id="budget" min="1"
+               placeholder="Example: 150">
+
+        <label for="days">Select planning period</label>
+        <select id="days">
+            <option value="1">1 Day</option>
+            <option value="3">3 Days</option>
+            <option value="5">5 Days</option>
+            <option value="7">7 Days</option>
+        </select>
+
+        <button type="button" onclick="generatePlan()">
+            ✨ Generate My Budget Plan
+        </button>
+
+        <div id="result" class="result"></div>
+    </section>
+
+    <section class="card">
+        <h2>🌱 Smart Budget Tips</h2>
+
+        <div class="meal">
+            🍌 Choose seasonal fruits and vegetables.
+        </div>
+
+        <div class="meal">
+            🫘 Include affordable protein foods like dal,
+            chickpeas, beans and eggs.
+        </div>
+
+        <div class="meal">
+            🍚 Plan meals using ingredients available at home.
+        </div>
+
+        <div class="meal">
+            🥕 Reduce food waste by storing ingredients properly.
+        </div>
+
+        <div class="meal">
+            🥛 Include a variety of food groups in your meals.
+        </div>
+    </section>
+
+</div>
+
 <footer>
     <p>TeenWell360 | Eat Smart. Spend Smart!</p>
 </footer>
@@ -9,7 +223,7 @@ function generatePlan() {
     const days = Number(document.getElementById("days").value);
     const result = document.getElementById("result");
 
-    if (!budget || budget <= 0) {
+    if (!Number.isFinite(budget) || budget <= 0) {
         result.style.display = "block";
         result.innerHTML =
             "<div class='meal'>Please enter a valid daily budget.</div>";
@@ -63,8 +277,8 @@ function generatePlan() {
 
         <p class="note">
             These are suggested budget allocations, not fixed food prices.
-            Actual costs depend on your location and available ingredients.
-            Adjust the plan according to your needs and the food available at home.
+            Actual costs depend on location and available ingredients.
+            Adjust the plan according to your needs and available foods.
         </p>
     `;
 }
@@ -73,4 +287,6 @@ function generatePlan() {
 </body>
 </html>
 
-        
+            
+
+
