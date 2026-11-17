@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    box_sizing: border_box;
+
+}
+
+body {
+    font_family: 'Segoe UI', sans_serif;
+    background: #f8f4ff;
+    color: #241a35;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 8%;
+    background: white;
+
+}
+
+.navbar h1 {
+    font-size: 30px;
+    color: #8154c8;
+
+}
+
+.navbar span {
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.hero {
+    display: flex;
+    justify-content: space-between;
+align-items: center;
+padding: 80px 10%;
+background: #e9dcff;
+min-height: 430px;
+gap: 30px;
+}
+
+.hero-text {
+    max-width: 500px;
+}
+
+.tag {
+    color: #8050bb;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.hero h2 {
+    font-size: 52px;
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+.hero-text p {
+    margin-bottom: 25px;
+    line-height: 1.7;
+}
+
+.btn {
+    display: inline-block;
+    background: #8050bb;
+    color: white;
+    text-decoration: none;
+    padding: 14px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+}
+
+.mascot {
+    font-size: 65px;
+    background: white;
+    padding: 45px;
+    border-radius: 35px;
+       text-align: center;
+}
+
+.mascot p {
+    font-size: 17px;
+    margin-top: 20px;
+}
+
+.features {
+    padding: 65px 8%;
+    text-align: center;
+}
+
+.features h2 {
+    margin-bottom: 35px;
+      font-size: 32px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 30px 15px;
+    border-radius: 20px;
+    font-size: 35px;
+}
+
+.card h3 {
+    font-size: 18px;
+    margin: 15px 0 10px;
+}
+
+.card p {
+    font-size: 14px;
+    }
+
+footer {
+    text-align: center;
+    padding: 25px;
+}
+
+@media (max-width: 700px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero h2 {
+        font-size: 38px;
+    }
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+        }
+
+    .navbar span {
+        display: none;
+    }
+}  
