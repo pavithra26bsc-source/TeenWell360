@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Planner | TeenWell360</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">TeenWell360 ✳</div>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="#meals">Meal Planner</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <p class="tag">🍓 YOUR DAILY FOOD GUIDE</p>
+            <h1>Eat Well.<br>Feel Amazing!</h1>
+            <p>Discover delicious meal ideas for every day!</p>
+        </div>
+
+        <div class="mascot">
+            🥑 🍓 🍌
+            <p>Let's eat happy!</p>
+        </div>
+    </section>
+
+    <section class="features" id="meals">
+        <h2>Your Daily Meal Ideas 🍽️</h2>
+<label for="foodType">Choose your food preference:</label>
+
+<select id="foodType">
+    <option value="veg">🥦 Vegetarian</option>
+    <option value="nonveg">🍗 Non-Vegetarian</option>
+</select>
+
+<br><br>
+<button onclick="generateMeals()" class="btn">
+    ✨ Generate My Meal Plan
+</button>
+
+<div id="meal-result"></div>
+
+        <div class="cards">
+            <div class="card">
+                <div class="emoji">🥞</div>
+                <h3>Breakfast</h3>
+                <p>Idli, dosa and fruits.</p>
+            </div>
+
+            <div class="card">
+                <div class="emoji">🍱</div>
+                <h3>Lunch</h3>
+                <p>Rice, vegetables and dal.</p>
+            </div>
+
+            <div class="card">
+                <div class="emoji">🥗</div>
+                <h3>Dinner</h3>
+                <p>Delicious dinner ideas.</p>
+            </div>
+
+            <div class="card">
+                <div class="emoji">🍎</div>
+                <h3>Snacks</h3>
+                <p>Fruits and yummy snacks.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Made with 💜 by TeenWell360</p>
+    </footer>
+
+
+<script>
+function generateMeals() {
+
+    const foodType = document.getElementById("foodType").value;
+
+    const vegMeals = [
+        {
+            breakfast: "🥞 Idli with sambar",
+            lunch: "🍚 Rice with dal and vegetables",
+            dinner: "🥗 Chapati with vegetable curry",
+            snack: "🍎 Apple and nuts"
+        },
+        {
+            breakfast: "🥣 Oats with banana",
+            lunch: "🍱 Vegetable pulao with curd",
+            dinner: "🍲 Dosa with sambar",
+            snack: "🍌 Banana"
+        }
+    ];
+
+    const nonVegMeals = [
+        {
+            breakfast: "🍳 Boiled eggs with toast",
+            lunch: "🍗 Chicken rice with vegetables",
+            dinner: "🥚 Egg dosa with vegetable salad",
+            snack: "🍎 Apple and yogurt"
+        },
+        {
+            breakfast: "🥪 Egg sandwich",
+            lunch: "🍛 Chicken curry with rice",
+            dinner: "🍲 Egg curry with chapati",
+            snack: "🍌 Banana and nuts"
+        }
+    ];
+
+    const meals = foodType === "veg"
+        ? vegMeals
+        : nonVegMeals;
+
+    const random = Math.floor(Math.random() * meals.length);
+    const selected = meals[random];
+
+    document.getElementById("meal-result").innerHTML = `
+        <div class="card">
+            <h2>💜 Your Daily Meal Plan</h2>
+            <p><strong>Breakfast:</strong> ${selected.breakfast}</p>
+            <p><strong>Lunch:</strong> ${selected.lunch}</p>
+            <p><strong>Dinner:</strong> ${selected.dinner}</p>
+            <p><strong>Snacks:</strong> ${selected.snack}</p>
+        </div>
+    `;
+}
+</script>
+
+</script>
+
+</body>
+</html>
