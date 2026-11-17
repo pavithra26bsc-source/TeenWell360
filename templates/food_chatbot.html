@@ -2,152 +2,224 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Food Chatbot | TeenWell360</title>
+<title>Food Chatbot | TeenWell360</title>
 
-    <link rel="stylesheet"
-    href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+<style>
+.chat-card {
+    max-width: 750px;
+    margin: auto;
+}
+
+#chatbox {
+    height: 330px;
+    overflow-y: auto;
+    background: #f8f4ff;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.chat-message {
+    padding: 12px;
+    border-radius: 10px;
+    margin: 10px 0;
+    line-height: 1.5;
+    white-space: pre-wrap;
+}
+
+.user-message {
+    background: #e6d8ff;
+}
+
+.bot-message {
+    background: white;
+}
+
+#userInput {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #c8b6df;
+    border-radius: 9px;
+    font-size: 16px;
+}
+
+#sendButton:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.chat-note {
+    font-size: 12px;
+    color: #62576e;
+}
+</style>
 </head>
 
 <body>
 
-    <nav class="navbar">
-        <div class="logo">TeenWell360 ✳</div>
+<nav class="navbar">
+    <div class="logo">TeenWell360 ✳</div>
 
-        <div class="nav-links">
-            <a href="/">Home</a>
-            <a href="/meal-planner">Meal Planner</a>
-            <a href="/budget-buddy">Budget Buddy</a>
-            <a href="/food-games">Food Games</a>
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/meal-planner">Meal Planner</a>
+        <a href="/budget-buddy">Budget Buddy</a>
+        <a href="/food-games">Food Games</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-content">
+        <p class="tag">🤖 YOUR AI FOOD ASSISTANT</p>
+        <h1>Meet Food Buddy!</h1>
+        <p>Ask questions. Explore nutrition. Learn something new!</p>
+    </div>
+
+    <div class="mascot">
+        🤖 🍎 🥑
+        <p>Your smart food companion is here!</p>
+    </div>
+</section>
+
+<section class="features">
+
+    <h2>Chat with Food Buddy 💜</h2>
+
+    <div class="card chat-card">
+
+        <div id="chatbox" aria-live="polite">
+            <p class="chat-message bot-message">
+                <strong>Food Buddy:</strong>
+                Hello! 👋 I'm your nutrition assistant.
+                Ask me about proteins, vitamins, minerals,
+                balanced meals, fruits and vegetables!
+            </p>
         </div>
-    </nav>
 
-    <section class="hero">
-        <div class="hero-content">
-            <p class="tag">🤖 YOUR FOOD ASSISTANT</p>
-            <h1>Ask Away!<br>Food Explorer.</h1>
-            <p>Ask simple questions about food and nutrition.</p>
-        </div>
+        <label for="userInput">Your question</label>
 
-        <div class="mascot">
-            🤖 🍎 🥑
-            <p>Hey! How can I help?</p>
-        </div>
-    </section>
+        <input
+            type="text"
+            id="userInput"
+            placeholder="Ask me something about nutrition..."
+            maxlength="1000"
+        >
 
-    <section class="features">
-        <h2>Chat with Food Buddy 💜</h2>
+        <button
+            class="btn"
+            id="sendButton"
+            onclick="sendMessage()">
+            Send Message ➤
+        </button>
 
-        <div class="card">
+        <p class="chat-note">
+            Food Buddy provides general nutrition education,
+            not medical advice.
+        </p>
 
-            <div id="chatbox">
-                <p><strong>Food Buddy:</strong>
-                Hello! Ask me about healthy foods! 😊</p>
-            </div>
+    </div>
 
-            <input
-                type="text"
-                id="userInput"
-                placeholder="Ask me something..."
-            >
+</section>
 
-            <button class="btn" onclick="sendMessage()">
-                Send Message ➤
-            </button>
+<footer>
+    <p>Made with 💜 by TeenWell360</p>
+</footer>
 
-        </div>
-    </section>
-
-    <footer>
-        <p>Made with 💜 by TeenWell360</p>
-    </footer>
-    
 <script>
-function sendMessage() {
 
-    const input = document.getElementById("userInput");
-    const chatbox = document.getElementById("chatbox");
+const input = document.getElementById("userInput");
+const chatbox = document.getElementById("chatbox");
+const sendButton = document.getElementById("sendButton");
 
-    const originalMessage = input.value.trim();
-    const message = originalMessage.toLowerCase();
 
-    if (!message) return;
+function addMessage(sender, message, className) {
 
-    const userText = document.createElement("p");
-    userText.innerHTML = "<strong>You:</strong> ";
-    userText.appendChild(document.createTextNode(originalMessage));
-    chatbox.appendChild(userText);
+    const paragraph = document.createElement("p");
+    paragraph.className = "chat-message " + className;
 
-    let reply = "";
+    const heading = document.createElement("strong");
+    heading.textContent = sender + ": ";
 
-    if (message.includes("hello") || message.includes("hi")) {
-        reply = "Heyyy! 👋 Welcome to TeenWell360! What food topic would you like to explore?";
-    }
+    paragraph.appendChild(heading);
+    paragraph.appendChild(document.createTextNode(message));
 
-    else if (message.includes("protein")) {
-        reply = "🥚 Protein helps your body grow and repair tissues. Try eggs, beans, lentils, milk and nuts.";
-    }
-
-    else if (message.includes("vitamin c")) {
-        reply = "🍊 Vitamin C supports your immune system. Guava, oranges, amla and capsicum are good sources.";
-    }
-
-    else if (message.includes("breakfast")) {
-        reply = "🥞 Breakfast ideas: idli with sambar, oats with banana, vegetable dosa or egg toast.";
-    }
-
-    else if (message.includes("lunch")) {
-        reply = "🍱 Lunch ideas: rice with dal, vegetable pulao, curd rice or chapati with vegetable curry.";
-    }
-
-    else if (message.includes("dinner")) {
-        reply = "🥗 Dinner ideas: vegetable khichdi, chapati with dal, dosa with sambar or vegetable rice.";
-    }
-
-    else if (message.includes("snack")) {
-        reply = "🍎 Snack ideas: seasonal fruits, roasted chickpeas, yogurt, nuts or homemade sandwiches.";
-    }
-
-    else if (message.includes("iron")) {
-        reply = "🥬 Iron is important for healthy blood. Lentils, beans, spinach and fortified cereals can provide iron.";
-    }
-
-    else if (message.includes("calcium")) {
-        reply = "🥛 Calcium supports healthy bones and teeth. Milk, curd, cheese and fortified foods are useful sources.";
-    }
-
-    else if (message.includes("water") || message.includes("hydration")) {
-        reply = "💧 Water helps regulate body temperature and supports digestion. Remember to drink throughout the day.";
-    }
-
-    else if (message.includes("fruit")) {
-        reply = "🍓 Try bananas, apples, oranges, guava and papaya. Different fruits provide different nutrients.";
-    }
-
-    else if (message.includes("vegetable")) {
-        reply = "🥦 Add variety! Carrots, spinach, broccoli, beans and pumpkin provide different vitamins and minerals.";
-    }
-
-    else if (message.includes("budget") || message.includes("cheap")) {
-        reply = "💸 Affordable choices include seasonal vegetables, lentils, rice, eggs and locally available fruits.";
-    }
-
-    else {
-        reply = "🤔 Interesting question! I can help with protein, vitamins, fruits, vegetables, breakfast, lunch, dinner and hydration. Try asking about one of these!";
-    }
-
-    const botText = document.createElement("p");
-    botText.innerHTML = "<strong>Food Buddy:</strong> ";
-    botText.appendChild(document.createTextNode(reply));
-    chatbox.appendChild(botText);
-
-    input.value = "";
+    chatbox.appendChild(paragraph);
     chatbox.scrollTop = chatbox.scrollHeight;
 }
-</script>
 
+
+async function sendMessage() {
+
+    const message = input.value.trim();
+
+    if (!message) {
+        return;
+    }
+
+    addMessage("You", message, "user-message");
+
+    input.value = "";
+    sendButton.disabled = true;
+    sendButton.textContent = "Thinking...";
+
+    try {
+
+        const response = await fetch("/ask-food-buddy", {
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                message: message
+            })
+        });
+
+        const data = await response.json();
+
+        addMessage(
+            "Food Buddy",
+            data.reply || "Sorry, please try again.",
+            "bot-message"
+        );
+
+    } catch (error) {
+
+        addMessage(
+            "Food Buddy",
+            "Unable to connect right now. Please try again.",
+            "bot-message"
+        );
+
+    } finally {
+
+        sendButton.disabled = false;
+        sendButton.textContent = "Send Message ➤";
+        input.focus();
+
+    }
+}
+
+
+input.addEventListener("keydown", function(event) {
+
+    if (event.key === "Enter") {
+        sendMessage();
+    }
+
+});
+
+</script>
 
 </body>
 </html>
+
+
+    
