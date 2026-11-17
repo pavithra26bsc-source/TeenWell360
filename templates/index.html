@@ -5,13 +5,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>TeenWell360 | Good Vibes. Great Bites.</title>
+<title>TeenWell360 | Food Adventure</title>
 
 <style>
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 html {
@@ -19,68 +19,73 @@ html {
 }
 
 body {
-    font-family: 'Trebuchet MS', Arial, sans-serif;
-    background: #fffaf5;
-    color: #403653;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    background: #fffaf7;
+    color: #514363;
 }
 
-/* NAVBAR */
+/* NAVIGATION */
 
 .navbar {
-    background: #ffffff;
+    background: white;
     padding: 17px 7%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     flex-wrap: wrap;
     gap: 15px;
-    box-shadow: 0 3px 15px rgba(70, 50, 90, 0.07);
+    box-shadow: 0 4px 15px rgba(80,50,100,0.08);
 }
 
 .logo {
-    font-size: 24px;
+    color: #8055b5;
+    font-size: 25px;
     font-weight: bold;
-    color: #7953ae;
 }
 
 .nav-links {
     display: flex;
-    gap: 25px;
+    gap: 23px;
 }
 
 .nav-links a {
     text-decoration: none;
-    color: #55466a;
+    color: #655474;
     font-weight: bold;
-    transition: 0.3s;
 }
 
 .nav-links a:hover {
-    color: #a16bd2;
+    color: #c46b9d;
 }
 
 /* HERO */
 
 .hero {
-    background: linear-gradient(135deg, #e9ddff, #e0f8ed, #fff0dc);
-    padding: 75px 8%;
+    background: linear-gradient(
+        130deg,
+        #e9dcff,
+        #dff8ed,
+        #fff0d9,
+        #ffe2ed
+    );
+    padding: 65px 7%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     flex-wrap: wrap;
     gap: 35px;
     overflow: hidden;
 }
 
 .hero-content {
-    max-width: 530px;
+    max-width: 550px;
 }
 
 .tag {
     display: inline-block;
     background: white;
-    color: #8056b3;
-    padding: 10px 17px;
+    color: #895bb6;
+    padding: 11px 18px;
     border-radius: 30px;
     font-size: 13px;
     font-weight: bold;
@@ -88,70 +93,96 @@ body {
 }
 
 .hero h1 {
-    font-size: clamp(42px, 7vw, 68px);
-    line-height: 1.12;
-    color: #68459b;
-    margin-bottom: 20px;
+    font-size: clamp(40px, 7vw, 65px);
+    line-height: 1.13;
+    color: #714a9f;
+    margin-bottom: 18px;
 }
 
 .hero-content > p:not(.tag) {
     font-size: 17px;
     line-height: 1.8;
-    color: #62566f;
-    margin-bottom: 27px;
+    margin-bottom: 25px;
+    color: #665a73;
 }
 
 .btn {
     display: inline-block;
-    background: #8056b3;
+    background: #8659b8;
     color: white;
     text-decoration: none;
-    padding: 16px 25px;
+    padding: 15px 25px;
     border-radius: 30px;
     font-weight: bold;
+    box-shadow: 0 5px 15px rgba(90,55,130,0.2);
     transition: 0.3s;
-    box-shadow: 0 5px 15px rgba(100, 65, 145, 0.2);
 }
 
 .btn:hover {
-    background: #654090;
+    background: #68418f;
     transform: translateY(-4px);
 }
 
-/* FOOD MASCOT */
+/* FOOD CHARACTERS */
 
-.mascot {
-    background: rgba(255,255,255,0.8);
-    border: 3px solid white;
+.food-world {
+    width: 310px;
+    max-width: 100%;
+    background: rgba(255,255,255,0.85);
+    border: 4px solid white;
     border-radius: 35px;
-    padding: 40px 25px;
+    padding: 25px 15px;
     text-align: center;
-    min-width: 250px;
-    box-shadow: 0 12px 30px rgba(90, 65, 120, 0.10);
+    box-shadow: 0 12px 30px rgba(90,60,120,0.1);
     animation: float 3s ease-in-out infinite;
 }
 
-.food-icons {
-    font-size: 65px;
-    margin-bottom: 20px;
-    line-height: 1.5;
+.food-world h2 {
+    color: #8055b5;
+    font-size: 22px;
+    margin-bottom: 18px;
 }
 
-.mascot p {
-    color: #7953ae;
-    font-size: 18px;
+.character {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 53px;
+    margin-bottom: 17px;
+}
+
+.character span {
+    display: inline-block;
+    animation: bounce 2s infinite;
+}
+
+.character span:nth-child(2) {
+    animation-delay: .3s;
+}
+
+.character span:nth-child(3) {
+    animation-delay: .6s;
+}
+
+.character span:nth-child(4) {
+    animation-delay: .9s;
+}
+
+.food-world p {
+    color: #725c85;
     font-weight: bold;
-}
-
-.mascot small {
-    display: block;
-    margin-top: 9px;
-    color: #776b83;
+    line-height: 1.6;
 }
 
 @keyframes float {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+    50% { transform: translateY(-9px); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
 }
 
 /* FEATURES */
@@ -162,120 +193,120 @@ body {
 }
 
 .section-tag {
-    color: #9a73c2;
-    font-size: 13px;
+    color: #bd6d9d;
     font-weight: bold;
+    font-size: 13px;
     letter-spacing: 2px;
     margin-bottom: 12px;
 }
 
 .features h2 {
     font-size: 34px;
-    color: #65458f;
-    margin-bottom: 12px;
+    color: #714a9f;
+    margin-bottom: 13px;
 }
 
 .section-description {
     color: #766b80;
-    margin-bottom: 38px;
     line-height: 1.7;
+    margin-bottom: 38px;
 }
 
 .cards {
+    max-width: 1050px;
+    margin: auto;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 23px;
-    max-width: 1050px;
-    margin: auto;
 }
 
 .card {
     display: block;
-    text-align: left;
     text-decoration: none;
+    text-align: left;
     padding: 28px;
-    border-radius: 24px;
-    color: #403653;
-    border: 2px solid transparent;
+    border-radius: 27px;
+    border: 3px solid white;
+    color: #514363;
     transition: 0.3s;
 }
 
 .card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 25px rgba(80, 60, 100, 0.12);
-    border-color: white;
+    transform: translateY(-9px) rotate(-1deg);
+    box-shadow: 0 12px 25px rgba(80,60,100,0.13);
 }
 
 .card:nth-child(1) {
-    background: #e9ddff;
-}
-
-.card:nth-child(2) {
-    background: #ffebd9;
-}
-
-.card:nth-child(3) {
-    background: #ddf5e8;
-}
-
-.card:nth-child(4) {
     background: #ffe3ed;
 }
 
+.card:nth-child(2) {
+    background: #ffedcf;
+}
+
+.card:nth-child(3) {
+    background: #dff5e7;
+}
+
+.card:nth-child(4) {
+    background: #e5e4ff;
+}
+
 .emoji {
-    width: 75px;
-    height: 75px;
+    width: 82px;
+    height: 82px;
     display: grid;
     place-items: center;
-    background: rgba(255,255,255,0.8);
-    border-radius: 22px;
-    font-size: 40px;
-    margin-bottom: 20px;
+    background: white;
+    border-radius: 25px;
+    font-size: 43px;
+    margin-bottom: 18px;
 }
 
 .card h3 {
-    font-size: 22px;
+    color: #714a9f;
+    font-size: 23px;
     margin-bottom: 10px;
-    color: #65458f;
 }
 
 .card p {
     line-height: 1.7;
-    color: #665c70;
+    color: #665a73;
 }
 
 .explore {
     display: inline-block;
-    margin-top: 20px;
-    font-size: 14px;
+    margin-top: 19px;
+    color: #8055b5;
     font-weight: bold;
-    color: #7651a4;
 }
 
-/* BOTTOM MESSAGE */
+/* FUN MESSAGE */
 
-.motivation {
-    background: #f0e9ff;
-    margin: 15px 7% 60px;
-    padding: 35px 20px;
+.fun-message {
+    margin: 10px 7% 60px;
+    padding: 38px 20px;
     text-align: center;
-    border-radius: 25px;
+    background: linear-gradient(120deg,#e8ddff,#ffe6ef,#e1f7e9);
+    border: 3px solid white;
+    border-radius: 30px;
 }
 
-.motivation h2 {
-    color: #7651a4;
+.fun-message h2 {
+    color: #754b9f;
+    font-size: 27px;
     margin-bottom: 12px;
 }
 
-.motivation p {
-    color: #655a70;
-    line-height: 1.7;
+.fun-message p {
+    color: #665a73;
+    line-height: 1.8;
 }
 
 /* FOOTER */
 
 footer {
-    background: #684795;
+    background: #76509d;
     color: white;
     text-align: center;
     padding: 28px 15px;
@@ -284,7 +315,7 @@ footer {
 
 footer p:last-child {
     font-size: 13px;
-    opacity: 0.8;
+    opacity: .85;
 }
 
 /* MOBILE */
@@ -297,24 +328,19 @@ footer p:last-child {
     }
 
     .nav-links {
-        gap: 17px;
-        flex-wrap: wrap;
         justify-content: center;
+        flex-wrap: wrap;
+        gap: 17px;
     }
 
     .hero {
-        text-align: center;
         justify-content: center;
-        padding: 55px 7%;
+        text-align: center;
+        padding: 50px 6%;
     }
 
-    .hero-content {
-        margin: auto;
-    }
-
-    .mascot {
+    .food-world {
         width: 100%;
-        min-width: 0;
     }
 
     .cards {
@@ -325,9 +351,17 @@ footer p:last-child {
         font-size: 28px;
     }
 
-    .motivation {
+    .fun-message {
         margin-left: 5%;
         margin-right: 5%;
+    }
+}
+
+@media(prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        scroll-behavior: auto !important;
+        transition: none !important;
     }
 }
 </style>
@@ -336,7 +370,7 @@ footer p:last-child {
 <body>
 
 <nav class="navbar">
-    <div class="logo">TeenWell360 ✳</div>
+    <div class="logo">🍓 TeenWell360</div>
 
     <div class="nav-links">
         <a href="/">Home</a>
@@ -349,39 +383,48 @@ footer p:last-child {
 
     <div class="hero-content">
 
-        <p class="tag">💜 YOUR FOOD COMPANION</p>
+        <p class="tag">🌈 YOUR HAPPY FOOD SPACE</p>
 
-        <h1>Good Vibes.<br>Great Bites.</h1>
+        <h1>Good Vibes.<br>Great Bites!</h1>
 
         <p>
-            Food, fun and wellness — all in one place!
-            Discover delicious meals, play nutrition games
-            and explore smart food choices.
-            Your food adventure starts here!
+            Hey, Food Explorer! 👋
+            Welcome to your colourful food world.
+            Discover yummy meal ideas, play exciting
+            games and explore the fun side of nutrition!
         </p>
 
         <a href="#features" class="btn">
-            Explore Your Food World →
+            Let's Explore! ✨
         </a>
 
     </div>
 
-    <div class="mascot">
-        <div class="food-icons">🍓 🥑 🥦</div>
-        <p>Heyyy, Food Explorer! 👋</p>
-        <small>Let's make food fun together!</small>
+    <div class="food-world">
+        <h2>Meet Your Food Pals!</h2>
+
+        <div class="character">
+            <span>🍓</span>
+            <span>🥑</span>
+            <span>🍍</span>
+            <span>🥦</span>
+        </div>
+
+        <p>
+            Eat • Learn • Play • Explore!
+        </p>
     </div>
 
 </section>
 
 <section class="features" id="features">
 
-    <p class="section-tag">YOUR LITTLE FOOD UNIVERSE</p>
+    <p class="section-tag">✨ YOUR FOOD ADVENTURE</p>
 
-    <h2>What's Your Food Mood? 👀</h2>
+    <h2>Where Shall We Go Today? 🎈</h2>
 
     <p class="section-description">
-        Pick your favourite activity and start exploring!
+        Choose an activity and start your adventure!
     </p>
 
     <div class="cards">
@@ -389,42 +432,42 @@ footer p:last-child {
         <a href="{{ url_for('meal_planner') }}" class="card">
             <div class="emoji">🍜</div>
             <h3>Meal Planner</h3>
-            <p>Discover tasty meal ideas and build balanced meals.</p>
-            <span class="explore">Explore Meals →</span>
+            <p>Explore tasty meal ideas and create balanced meals.</p>
+            <span class="explore">Let's Plan! →</span>
         </a>
 
         <a href="{{ url_for('budget_buddy') }}" class="card">
-            <div class="emoji">💸</div>
+            <div class="emoji">💰</div>
             <h3>Budget Buddy</h3>
-            <p>Discover affordable food choices and smart meal ideas.</p>
-            <span class="explore">Plan Your Budget →</span>
+            <p>Discover smart and affordable food choices.</p>
+            <span class="explore">Let's Save! →</span>
         </a>
 
         <a href="{{ url_for('food_games') }}" class="card">
             <div class="emoji">🎮</div>
             <h3>Food Games</h3>
-            <p>Play fun challenges and discover interesting food facts.</p>
-            <span class="explore">Play Games →</span>
+            <p>Play fun challenges and become a food explorer.</p>
+            <span class="explore">Let's Play! →</span>
         </a>
 
         <a href="{{ url_for('food_chatbot') }}" class="card">
             <div class="emoji">🤖</div>
             <h3>Food Buddy</h3>
-            <p>Ask food questions and learn about nutrition.</p>
-            <span class="explore">Chat Now →</span>
+            <p>Ask questions and discover interesting food facts.</p>
+            <span class="explore">Let's Chat! →</span>
         </a>
 
     </div>
 
 </section>
 
-<section class="motivation">
-    <h2>🌈 Small Steps. Bright Futures!</h2>
+<section class="fun-message">
+    <h2>🌟 You're a Food Explorer!</h2>
     <p>
-        Explore new foods, learn something interesting
-        and enjoy your food journey.
-        Every little step counts!
+        Every food has a story. Every meal is an adventure.
+        Keep learning, keep exploring and enjoy the journey!
     </p>
+    <p>🍉 🥑 🍓 🥕 🍍</p>
 </section>
 
 <footer id="about">
@@ -435,4 +478,4 @@ footer p:last-child {
 </body>
 </html>
 
- 
+
