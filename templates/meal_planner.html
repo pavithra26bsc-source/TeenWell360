@@ -86,10 +86,23 @@ href="{{ url_for('static', filename='css/style.css') }}">
 }
 
 .meal-result-card {
-    background: #f0eaff;
-    padding: 28px;
-    border-radius: 25px;
+    background: linear-gradient(135deg, #f0eaff, #e3f8ed, #fff0f5);
+    padding: 30px;
+    border-radius: 28px;
     border: 3px solid white;
+    box-shadow: 0 10px 25px rgba(80,50,100,.10);
+    animation: mealAppear .5s ease;
+}
+
+@keyframes mealAppear {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .meal-result-card h2 {
@@ -99,11 +112,14 @@ href="{{ url_for('static', filename='css/style.css') }}">
 }
 
 .meal-result-card p {
-    background: white;
-    padding: 13px;
-    border-radius: 13px;
-    margin: 10px 0;
-    line-height: 1.6;
+    background: rgba(255,255,255,0.9);
+    padding: 16px;
+    border-radius: 16px;
+    margin: 12px 0;
+    line-height: 1.7;
+    border-left: 5px solid #c9a7ed;
+    color: #665477;
+    box-shadow: 0 3px 10px rgba(80,50,100,.05);
 }
 
 .meal-note {
@@ -266,7 +282,15 @@ function generateMeals() {
 
     const random = Math.floor(Math.random() * meals.length);
     const selected = meals[random];
+const tips = [
+    "🌈 Try including different coloured fruits and vegetables.",
+    "🥛 Milk, curd and paneer provide calcium.",
+    "🥜 Nuts and pulses are useful sources of protein.",
+    "🍎 Enjoy a variety of foods throughout the day.",
+    "💧 Remember to drink water regularly!"
+];
 
+const randomTip = tips[Math.floor(Math.random() * tips.length)];
     document.getElementById("meal-result").innerHTML = `
         <div class="meal-result-card">
             <h2>💜 Your Meal Plan!</h2>
@@ -275,9 +299,8 @@ function generateMeals() {
             <p><strong>🌙 Dinner:</strong> ${selected.dinner}</p>
             <p><strong>🍎 Snack:</strong> ${selected.snack}</p>
             <p class="meal-note">
-                Food Pals tip: These are sample meal ideas.
-                Enjoy a variety of foods and adjust choices to your needs.
-            </p>
+    <strong>💡 Food Pals Tip:</strong> ${randomTip}
+</p>
         </div>
     `;
 }
