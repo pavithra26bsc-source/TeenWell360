@@ -5,56 +5,88 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Food Chatbot | TeenWell360</title>
+<title>Food Buddy | TeenWell360</title>
 
 <link rel="stylesheet"
 href="{{ url_for('static', filename='css/style.css') }}">
 
 <style>
+.chat-container {
+    max-width: 800px;
+    margin: 25px auto;
+    padding: 15px;
+}
+
 .chat-card {
-    max-width: 750px;
-    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 3px 12px #ddd;
 }
 
 #chatbox {
-    height: 330px;
+    height: 350px;
     overflow-y: auto;
-    background: #f8f4ff;
     padding: 15px;
+    background: #f8f4ff;
     border-radius: 12px;
     margin-bottom: 15px;
 }
 
-.chat-message {
+.message {
     padding: 12px;
-    border-radius: 10px;
+    border-radius: 12px;
     margin: 10px 0;
     line-height: 1.5;
     white-space: pre-wrap;
 }
 
-.user-message {
-    background: #e6d8ff;
+.user {
+    background: #e5d5ff;
+    text-align: right;
 }
 
-.bot-message {
+.bot {
     background: white;
+    border: 1px solid #eee;
 }
 
 #userInput {
     width: 100%;
-    padding: 13px;
+    padding: 14px;
     border: 1px solid #c8b6df;
     border-radius: 9px;
     font-size: 16px;
 }
 
-#sendButton:disabled {
-    opacity: 0.6;
-    cursor: wait;
+.quick-questions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 15px 0;
 }
 
-.chat-note {
+.quick-questions button {
+    background: #eee4ff;
+    color: #603b91;
+    border: none;
+    border-radius: 20px;
+    padding: 9px 13px;
+    cursor: pointer;
+}
+
+#sendButton {
+    width: 100%;
+    padding: 13px;
+    background: #7044a5;
+    color: white;
+    border: none;
+    border-radius: 9px;
+    margin-top: 12px;
+    cursor: pointer;
+}
+
+.note {
     font-size: 12px;
     color: #62576e;
 }
@@ -76,49 +108,57 @@ href="{{ url_for('static', filename='css/style.css') }}">
 
 <section class="hero">
     <div class="hero-content">
-        <p class="tag">🤖 YOUR AI FOOD ASSISTANT</p>
+        <p class="tag">🤖 YOUR SMART FOOD COMPANION</p>
         <h1>Meet Food Buddy!</h1>
         <p>Ask questions. Explore nutrition. Learn something new!</p>
     </div>
 
     <div class="mascot">
         🤖 🍎 🥑
-        <p>Your smart food companion is here!</p>
+        <p>Your nutrition friend is here!</p>
     </div>
 </section>
 
-<section class="features">
+<section class="chat-container">
 
-    <h2>Chat with Food Buddy 💜</h2>
+    <div class="chat-card">
 
-    <div class="card chat-card">
+        <h2>💜 Chat with Food Buddy</h2>
 
         <div id="chatbox" aria-live="polite">
-            <p class="chat-message bot-message">
+            <div class="message bot">
                 <strong>Food Buddy:</strong>
-                Hello! 👋 I'm your nutrition assistant.
-                Ask me about proteins, vitamins, minerals,
-                balanced meals, fruits and vegetables!
-            </p>
+                Hello! 👋 Welcome to TeenWell360!
+                Ask me about food, nutrients, balanced meals,
+                food safety and healthy eating!
+            </div>
         </div>
 
-        <label for="userInput">Your question</label>
+        <h3>✨ Quick Questions</h3>
+
+        <div class="quick-questions">
+            <button onclick="askQuestion('What is protein?')">Protein</button>
+            <button onclick="askQuestion('What is a balanced meal?')">Balanced Meal</button>
+            <button onclick="askQuestion('Tell me about iron')">Iron</button>
+            <button onclick="askQuestion('Give me breakfast ideas')">Breakfast</button>
+            <button onclick="askQuestion('Why should I drink water?')">Water</button>
+            <button onclick="askQuestion('Food safety tips')">Food Safety</button>
+        </div>
+
+        <label for="userInput">Type your question:</label>
 
         <input
             type="text"
             id="userInput"
-            placeholder="Ask me something about nutrition..."
-            maxlength="1000"
+            placeholder="Ask Food Buddy something..."
+            maxlength="300"
         >
 
-        <button
-            class="btn"
-            id="sendButton"
-            onclick="sendMessage()">
+        <button id="sendButton" onclick="sendMessage()">
             Send Message ➤
         </button>
 
-        <p class="chat-note">
+        <p class="note">
             Food Buddy provides general nutrition education,
             not medical advice.
         </p>
@@ -133,28 +173,127 @@ href="{{ url_for('static', filename='css/style.css') }}">
 
 <script>
 
-const input = document.getElementById("userInput");
 const chatbox = document.getElementById("chatbox");
-const sendButton = document.getElementById("sendButton");
+const input = document.getElementById("userInput");
 
 
-function addMessage(sender, message, className) {
+function addMessage(sender, message, type) {
 
-    const paragraph = document.createElement("p");
-    paragraph.className = "chat-message " + className;
+    const div = document.createElement("div");
+    div.className = "message " + type;
 
     const heading = document.createElement("strong");
     heading.textContent = sender + ": ";
 
-    paragraph.appendChild(heading);
-    paragraph.appendChild(document.createTextNode(message));
+    div.appendChild(heading);
+    div.appendChild(document.createTextNode(message));
 
-    chatbox.appendChild(paragraph);
+    chatbox.appendChild(div);
     chatbox.scrollTop = chatbox.scrollHeight;
 }
 
 
-async function sendMessage() {
+function getReply(message) {
+
+    const m = message.toLowerCase();
+
+    if (/\b(hello|hi|hey)\b/.test(m)) {
+        return "Hello! 👋 Welcome to Food Buddy! What would you like to learn about today?";
+    }
+
+    if (m.includes("protein")) {
+        return "🥚 Protein helps the body grow and repair tissues. Sources include eggs, milk, lentils, beans, chickpeas, paneer and nuts.";
+    }
+
+    if (m.includes("carbohydrate") || m.includes("carbs")) {
+        return "🍚 Carbohydrates provide energy. Rice, wheat, millets, potatoes and fruits are examples of carbohydrate-rich foods.";
+    }
+
+    if (m.includes("fat")) {
+        return "🥑 Dietary fats help the body absorb certain vitamins and support normal body functions. Sources include nuts, seeds, oils and avocado.";
+    }
+
+    if (m.includes("vitamin c")) {
+        return "🍊 Vitamin C supports normal immune function and helps the body absorb iron. Guava, amla, oranges and capsicum are good sources.";
+    }
+
+    if (m.includes("vitamin a")) {
+        return "🥕 Vitamin A supports vision and normal immune function. Carrots, pumpkin, spinach and other colourful vegetables provide vitamin A or its precursors.";
+    }
+
+    if (m.includes("vitamin d")) {
+        return "🌞 Vitamin D helps the body absorb calcium. Sunlight exposure, fortified foods and some foods such as eggs and oily fish can provide vitamin D.";
+    }
+
+    if (m.includes("iron")) {
+        return "🥬 Iron helps the body make haemoglobin, which carries oxygen in blood. Lentils, beans, greens and fortified cereals are useful sources. Vitamin C foods help iron absorption.";
+    }
+
+    if (m.includes("calcium")) {
+        return "🥛 Calcium supports bones and teeth. Milk, curd, paneer, ragi and calcium-fortified foods are useful sources.";
+    }
+
+    if (m.includes("fibre") || m.includes("fiber")) {
+        return "🌾 Fibre supports digestion and helps keep bowel movements regular. Fruits, vegetables, whole grains, beans and lentils provide fibre.";
+    }
+
+    if (m.includes("balanced") || m.includes("balanced plate")) {
+        return "🍱 A balanced meal can include cereals or millets, protein foods such as dal or eggs, plenty of vegetables, fruit and suitable dairy or alternatives. Variety matters!";
+    }
+
+    if (m.includes("breakfast")) {
+        return "🌅 Breakfast ideas: idli with sambar, vegetable dosa, oats with banana, vegetable upma or egg toast. Choose what suits your needs and availability.";
+    }
+
+    if (m.includes("lunch")) {
+        return "☀️ Lunch ideas: rice with dal and vegetables, curd rice with vegetable poriyal, chapati with paneer curry or vegetable pulao with curd.";
+    }
+
+    if (m.includes("dinner")) {
+        return "🌙 Dinner ideas: chapati with dal, vegetable khichdi, dosa with sambar or rice with vegetable curry.";
+    }
+
+    if (m.includes("snack")) {
+        return "🍎 Snack ideas: seasonal fruits, roasted chickpeas, yogurt, nuts, boiled corn or homemade sandwiches.";
+    }
+
+    if (m.includes("water") || m.includes("hydration")) {
+        return "💧 Water supports digestion and helps regulate body temperature. Drink regularly throughout the day, especially in hot weather and during activity.";
+    }
+
+    if (m.includes("fruit")) {
+        return "🍓 Fruits provide vitamins, minerals and fibre. Try locally available choices such as banana, guava, papaya, orange and watermelon.";
+    }
+
+    if (m.includes("vegetable")) {
+        return "🥦 Vegetables provide different vitamins, minerals and fibre. Include a variety of green leafy, orange, red and other vegetables.";
+    }
+
+    if (m.includes("food safety") || m.includes("food hygiene") || m.includes("hygiene")) {
+        return "🧼 Food safety tips: wash hands before cooking, use clean utensils, wash produce, separate raw and cooked foods, and store perishable foods safely.";
+    }
+
+    if (m.includes("budget") || m.includes("cheap") || m.includes("affordable")) {
+        return "💸 Budget-friendly foods include seasonal vegetables, local fruits, rice, millets, lentils, beans and eggs. Plan meals around available ingredients.";
+    }
+
+    if (m.includes("digestion")) {
+        return "🌿 Fibre-rich foods, adequate fluids and a varied diet support normal digestion. If you have persistent discomfort, speak with a healthcare professional.";
+    }
+
+    if (m.includes("thank")) {
+        return "You're welcome! 💜 Keep exploring food and nutrition with TeenWell360!";
+    }
+
+    if (m.includes("bye")) {
+        return "Goodbye! 👋 Keep learning and exploring nutrition. See you soon!";
+    }
+
+    return "🤔 That's an interesting question! I can help with proteins, vitamins, minerals, balanced meals, breakfast, lunch, snacks, hydration and food safety. Try asking about one of these topics!";
+}
+
+
+function sendMessage() {
 
     const message = input.value.trim();
 
@@ -162,49 +301,20 @@ async function sendMessage() {
         return;
     }
 
-    addMessage("You", message, "user-message");
+    addMessage("You", message, "user");
+
+    const reply = getReply(message);
+
+    addMessage("Food Buddy", reply, "bot");
 
     input.value = "";
-    sendButton.disabled = true;
-    sendButton.textContent = "Thinking...";
+    input.focus();
+}
 
-    try {
 
-        const response = await fetch("/ask-food-buddy", {
-            method: "POST",
-
-            headers: {
-                "Content-Type": "application/json"
-            },
-
-            body: JSON.stringify({
-                message: message
-            })
-        });
-
-        const data = await response.json();
-
-        addMessage(
-            "Food Buddy",
-            data.reply || "Sorry, please try again.",
-            "bot-message"
-        );
-
-    } catch (error) {
-
-        addMessage(
-            "Food Buddy",
-            "Unable to connect right now. Please try again.",
-            "bot-message"
-        );
-
-    } finally {
-
-        sendButton.disabled = false;
-        sendButton.textContent = "Send Message ➤";
-        input.focus();
-
-    }
+function askQuestion(question) {
+    input.value = question;
+    sendMessage();
 }
 
 
@@ -222,4 +332,7 @@ input.addEventListener("keydown", function(event) {
 </html>
 
 
-    
+        
+
+
+
