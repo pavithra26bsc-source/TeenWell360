@@ -4,127 +4,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Budget Buddy | TeenWell360</title>
 
-    <link rel="stylesheet"
-    href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f8f4ff;
+            color: #302344;
+        }
+
+        .navbar {
+            background: #7044a5;
+            color: white;
+            padding: 18px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin: 5px;
+            font-size: 14px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 35px 15px;
+            background: #eadcff;
+        }
+
+        .hero h1 {
+            color: #7044a5;
+            font-size: 35px;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 25px auto;
+            padding: 15px;
+        }
+
+        .card {
+            background: white;
+            padding: 23px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 12px #ddd;
+        }
+
+        h2 {
+            color: #7044a5;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 8px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #c8b6df;
+            border-radius: 9px;
+            font-size: 16px;
+        }
+
+        button {
+            background: #7044a5;
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 9px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 18px;
+            width: 100%;
+        }
+
+        button:hover {
+            background: #542d87;
+        }
+
+        .result {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .meal {
+            background: #f5efff;
+            padding: 13px;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+
+        .amount {
+            color: #7044a5;
+            font-weight: bold;
+        }
+
+        .note {
+            font-size: 13px;
+            color: #62576e;
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            background: #7044a5;
+            color: white;
+            padding: 18px;
+            margin-top: 35px;
+        }
+
+        @media(max-width: 600px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .navbar {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <nav class="navbar">
-        <div class="logo">TeenWell360 ✳</div>
+<nav class="navbar">
+    <div class="logo">TeenWell360 ✳</div>
 
-        <div class="nav-links">
-            <a href="/">Home</a>
-            <a href="/meal-planner">Meal Planner</a>
-            <a href="#budget">Budget Buddy</a>
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/meal-planner">Meal Planner</a>
+        <a href="/food-games">Food Games</a>
+        <a href="/food-chatbot">Chatbot</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <p>💜 YOUR SMART FOOD COMPANION</p>
+    <h1>Budget Buddy</h1>
+    <p>Eat Smart. Spend Smart!</p>
+    <p>Discover affordable and nutritious meal ideas.</p>
+</section>
+
+<div class="container">
+
+    <section class="card">
+        <h2>💰 Plan Your Food Budget</h2>
+
+        <label for="budget">Enter your daily budget (₹)</label>
+        <input
+            type="number"
+            id="budget"
+            min="1"
+            placeholder="Example: 150"
+        >
+
+        <label for="days">Select planning period</label>
+        <select id="days">
+            <option value="1">1 Day</option>
+            <option value="3">3 Days</option>
+            <option value="5">5 Days</option>
+            <option value="7">7 Days</option>
+        </select>
+
+        <button onclick="generatePlan()">
+            ✨ Generate My Budget Plan
+        </button>
+
+        <div id="result" class="result"></div>
+    </section>
+
+    <section class="card">
+        <h2>🌱 Smart Budget Tips</h2>
+
+        <div class="meal">
+            🍌 Choose seasonal fruits and vegetables.
         </div>
-    </nav>
 
-    <section class="hero">
-        <div class="hero-content">
-            <p class="tag">💸 YOUR SMART FOOD COMPANION</p>
-
-            <h1>Eat Smart.<br>Spend Smart!</h1>
-
-            <p>
-                Discover affordable and nutritious
-                food ideas that fit your budget.
-            </p>
+        <div class="meal">
+            🫘 Include affordable protein foods like dal,
+            chickpeas, beans and eggs.
         </div>
 
-        <div class="mascot">
-            💰 🥑 🍎
-            <p>Your Budget Buddy is here!</p>
+        <div class="meal">
+            🍚 Plan meals using ingredients available at home.
+        </div>
+
+        <div class="meal">
+            🥕 Reduce food waste by storing ingredients properly.
+        </div>
+
+        <div class="meal">
+            🥛 Include a variety of food groups in your meals.
         </div>
     </section>
 
-    <section class="features" id="budget">
+</div>
 
-        <h2>What's Your Food Budget? 💜</h2>
+<footer
 
-        <div class="card">
-
-            <label for="budgetAmount">
-                Enter your daily budget (₹):
-            </label>
-
-            <input
-                type="number"
-                id="budgetAmount"
-                placeholder="Example: 100"
-                min="1"
-            >
-
-            <br><br>
-
-            <button onclick="findFood()" class="btn">
-                ✨ Find My Budget Meals
-            </button>
-
-            <div id="budget-result"></div>
-
-        </div>
-
-    </section>
-
-    <footer>
-        <p>Made with 💜 by TeenWell360</p>
-    </footer>
-
-    <script>
-    function findFood() {
-
-        const budget = Number(
-            document.getElementById("budgetAmount").value
-        );
-
-        const result = document.getElementById("budget-result");
-
-        if (!Number.isFinite(budget) || budget <= 0) {
-            result.innerHTML = "<p>Please enter a valid budget.</p>";
-            return;
-        }
-
-        let suggestion = "";
-
-        if (budget < 50) {
-            suggestion = `
-                <h3>💜 Affordable Food Ideas</h3>
-                <p>🍌 Banana</p>
-                <p>🥣 Homemade vegetable upma</p>
-                <p>🥜 Roasted chickpeas</p>
-            `;
-        } 
-        else if (budget < 100) {
-            suggestion = `
-                <h3>💜 More Food Choices!</h3>
-                <p>🥞 Idli with sambar</p>
-                <p>🍚 Lemon rice</p>
-                <p>🍎 Seasonal fruits</p>
-            `;
-        } 
-        else {
-            suggestion = `
-                <h3>💜 Your Meal Options</h3>
-                <p>🍱 Vegetable rice with curd</p>
-                <p>🥗 Chapati with vegetable curry</p>
-                <p>🥛 Milk and fruits</p>
-            `;
-        }
-
-        result.innerHTML = `
-            <div class="card">
-                ${suggestion}
-                <p>Remember to choose meals that are
-                satisfying, varied and nutritious!</p>
-                <small>Prices vary by location and season.</small>
-            </div>
-        `;
-    }
-    </script>
-
-</body>
-</html>
+        
+            
