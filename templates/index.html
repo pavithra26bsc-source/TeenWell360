@@ -122,12 +122,12 @@ body {
     background: #68418f;
     transform: translateY(-4px);
 }
-
 /* FOOD CHARACTERS */
 
 .food-world {
     width: 310px;
     max-width: 100%;
+    min-width: 0;
     background: rgba(255,255,255,0.85);
     border: 4px solid white;
     border-radius: 35px;
@@ -135,6 +135,8 @@ body {
     text-align: center;
     box-shadow: 0 12px 30px rgba(90,60,120,0.1);
     animation: float 3s ease-in-out infinite;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
 .food-world h2 {
@@ -144,29 +146,22 @@ body {
 }
 
 .character {
+    width: 100%;
+    max-width: 100%;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    font-size: 53px;
-    margin-bottom: 17px;
+    align-items: center;
+    overflow: hidden;
+    margin: 0 auto 17px;
 }
 
-.character span {
-    display: inline-block;
-    animation: bounce 2s infinite;
-}
-
-.character span:nth-child(2) {
-    animation-delay: .3s;
-}
-
-.character span:nth-child(3) {
-    animation-delay: .6s;
-}
-
-.character span:nth-child(4) {
-    animation-delay: .9s;
+.sticker-image {
+    display: block;
+    width: 100%;
+    max-width: 180px;
+    height: auto;
+    object-fit: contain;
+    margin: auto;
 }
 
 .food-world p {
@@ -180,10 +175,7 @@ body {
     50% { transform: translateY(-9px); }
 }
 
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
-}
+
 
 /* FEATURES */
 
