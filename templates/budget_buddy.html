@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Budget Buddy | TeenWell360</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">TeenWell360 ✳</div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/meal-planner">Meal Planner</a>
+            <a href="#budget">Budget Buddy</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <p class="tag">💸 YOUR SMART FOOD COMPANION</p>
+
+            <h1>Eat Smart.<br>Spend Smart!</h1>
+
+            <p>
+                Discover affordable and nutritious
+                food ideas that fit your budget.
+            </p>
+        </div>
+
+        <div class="mascot">
+            💰 🥑 🍎
+            <p>Your Budget Buddy is here!</p>
+        </div>
+    </section>
+
+    <section class="features" id="budget">
+
+        <h2>What's Your Food Budget? 💜</h2>
+
+        <div class="card">
+
+            <label for="budgetAmount">
+                Enter your daily budget (₹):
+            </label>
+
+            <input
+                type="number"
+                id="budgetAmount"
+                placeholder="Example: 100"
+                min="1"
+            >
+
+            <br><br>
+
+            <button onclick="findFood()" class="btn">
+                ✨ Find My Budget Meals
+            </button>
+
+            <div id="budget-result"></div>
+
+        </div>
+
+    </section>
+
+    <footer>
+        <p>Made with 💜 by TeenWell360</p>
+    </footer>
+
+    <script>
+    function findFood() {
+
+        const budget = Number(
+            document.getElementById("budgetAmount").value
+        );
+
+        const result = document.getElementById("budget-result");
+
+        if (!Number.isFinite(budget) || budget <= 0) {
+            result.innerHTML = "<p>Please enter a valid budget.</p>";
+            return;
+        }
+
+        let suggestion = "";
+
+        if (budget < 50) {
+            suggestion = `
+                <h3>💜 Affordable Food Ideas</h3>
+                <p>🍌 Banana</p>
+                <p>🥣 Homemade vegetable upma</p>
+                <p>🥜 Roasted chickpeas</p>
+            `;
+        } 
+        else if (budget < 100) {
+            suggestion = `
+                <h3>💜 More Food Choices!</h3>
+                <p>🥞 Idli with sambar</p>
+                <p>🍚 Lemon rice</p>
+                <p>🍎 Seasonal fruits</p>
+            `;
+        } 
+        else {
+            suggestion = `
+                <h3>💜 Your Meal Options</h3>
+                <p>🍱 Vegetable rice with curd</p>
+                <p>🥗 Chapati with vegetable curry</p>
+                <p>🥛 Milk and fruits</p>
+            `;
+        }
+
+        result.innerHTML = `
+            <div class="card">
+                ${suggestion}
+                <p>Remember to choose meals that are
+                satisfying, varied and nutritious!</p>
+                <small>Prices vary by location and season.</small>
+            </div>
+        `;
+    }
+    </script>
+
+</body>
+</html>
