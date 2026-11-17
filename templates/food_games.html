@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Food Games | TeenWell360</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">TeenWell360 ✳</div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="meal_planner">Meal Planner</a>
+            <a href="budget_buddy">Budget Buddy</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <p class="tag">🎮 LEARN THROUGH PLAY</p>
+
+            <h1>Play Smart.<br>Eat Smart!</h1>
+
+            <p>
+                Test your food knowledge with fun
+                nutrition questions and challenges!
+            </p>
+        </div>
+
+        <div class="mascot">
+            🍓 🥑 🥦
+            <p>Ready for a food challenge?</p>
+        </div>
+    </section>
+
+    <section class="features">
+
+        <h2>🥳 Food Knowledge Quiz</h2>
+
+        <div class="card">
+
+            <h3 id="question">Loading question...</h3>
+
+            <div id="answers"></div>
+
+            <p id="feedback"></p>
+
+            <p id="score">Score: 0</p>
+
+            <button id="nextBtn" class="btn"
+                onclick="nextQuestion()" hidden>
+                Next Question →
+            </button>
+
+        </div>
+
+    </section>
+
+    <footer>
+        <p>Made with 💜 by TeenWell360</p>
+    </footer>
+
+    <script>
+
+    const questions = [
+        {
+            question: "🍊 Which fruit is rich in Vitamin C?",
+            answers: ["Orange", "Rice", "Bread", "Potato"],
+            correct: "Orange"
+        },
+        {
+            question: "🥛 Which food is a good source of calcium?",
+            answers: ["Milk", "Candy", "Chips", "Soda"],
+            correct: "Milk"
+        },
+        {
+            question: "🥕 Which vegetable is rich in beta-carotene?",
+            answers: ["Carrot", "Cucumber", "Onion", "Lettuce"],
+            correct: "Carrot"
+        },
+        {
+            question: "💧 What should you drink to stay hydrated?",
+            answers: ["Water", "Soda", "Energy drinks", "Candy"],
+            correct: "Water"
+        },
+        {
+            question: "🥚 Which food contains protein?",
+            answers: ["Eggs", "Sugar", "Soft drinks", "Jam"],
+            correct: "Eggs"
+        }
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+    let answered = false;
+
+    function showQuestion() {
+
+        answered = false;
+
+        const q = questions[currentQuestion];
+
+        document.getElementById("question").textContent =
+            q.question;
+
+        document.getElementById("answers").innerHTML = "";
+
+        document.getElementById("feedback").textContent = "";
+
+        document.getElementById("nextBtn").hidden = true;
+
+        q.answers.forEach(answer => {
+
+            const button = document.createElement("button");
+
+            button.textContent = answer;
+            button.className = "btn";
+            button.style.margin = "8px";
+
+            button.onclick = () => checkAnswer(answer);
+
+            document.getElementById("answers")
+                .appendChild(button);
+        });
+
+        document.getElementById("score").textContent =
+            "Score: " + score;
+    }
+
+    function checkAnswer(answer) {
+
+        if (answered) return;
+
+        answered = true;
+
+        const correct = questions[currentQuestion].correct;
+
+        if (answer === correct) {
+            score++;
+            document.getElementById("feedback").textContent =
+                "🎉 Correct! Great job!";
+        } else {
+            document.getElementById("feedback").textContent =
+                "💜 Good try! The correct answer is " + correct;
+        }
+
+        document.getElementById("score").textContent =
+            "Score: " + score;
+
+        document.getElementById("nextBtn").hidden = false;
+    }
+
+    function nextQuestion() {
+
+        currentQuestion++;
+
+        if (currentQuestion < questions.length) {
+            showQuestion();
+        } else {
+            document.getElementById("question").textContent =
+                "🎊 Quiz Completed!";
+
+            document.getElementById("answers").innerHTML =
+                "<h2>Your Score: " + score + " / " +
+                questions.length + "</h2>";
+
+            document.getElementById("feedback").textContent =
+                "Thanks for playing with TeenWell360! 💜";
+
+            document.getElementById("nextBtn").textContent =
+                "Play Again 🔄";
+
+            document.getElementById("nextBtn").onclick =
+                restartQuiz;
+        }
+    }
+
+    function restartQuiz() {
+
+        currentQuestion = 0;
+        score = 0;
+
+        document.getElementById("nextBtn").onclick =
+            nextQuestion;
+
+        document.getElementById("nextBtn").textContent =
+            "Next Question →";
+
+        showQuestion();
+    }
+
+    showQuestion();
+
+    </script>
+
+</body>
+</html>
