@@ -330,5 +330,20 @@ footer {
         scroll-behavior: auto !important;
     }
 }
+.character {
+    width: 100%;
+    max-width: 300px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.sticker-image {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
     
