@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,16 +11,17 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #f8f4ff;
-    color: #302344;
+    background: #fff8fc;
+    color: #392b4b;
 }
 
 .navbar {
-    background: #7044a5;
+    background: #8056b5;
     color: white;
-    padding: 18px;
+    padding: 16px 6%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     flex-wrap: wrap;
     gap: 12px;
 }
@@ -31,160 +31,196 @@ body {
 .nav-links a {
     color: white;
     text-decoration: none;
-    margin: 5px;
+    margin: 6px;
+    font-size: 14px;
 }
 
 .hero {
     text-align: center;
-    padding: 35px 15px;
-    background: #eadcff;
+    padding: 40px 15px;
+    background: linear-gradient(135deg, #f0ddff, #ffe5ed, #e2f8e9);
 }
 
 .hero h1 {
     color: #7044a5;
-    font-size: 34px;
+    font-size: 36px;
+    margin: 10px;
+}
+
+.hero p { line-height: 1.6; }
+
+.mascots {
+    font-size: 38px;
+    margin: 15px;
 }
 
 .container {
-    max-width: 850px;
+    max-width: 900px;
     margin: 25px auto;
     padding: 15px;
 }
 
 .card {
     background: white;
-    padding: 22px;
-    border-radius: 16px;
-    margin-bottom: 18px;
-    box-shadow: 0 3px 12px #ddd;
+    padding: 23px;
+    border-radius: 22px;
+    margin-bottom: 22px;
+    box-shadow: 0 5px 18px #e9dff0;
+    border: 2px solid #f4eaff;
 }
 
-h2, h3 { color: #7044a5; }
+h2, h3 { color: #8056b5; }
+
+.game-menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+}
 
 button {
-    background: #7044a5;
+    background: #8056b5;
     color: white;
     border: none;
-    padding: 12px 16px;
-    border-radius: 9px;
+    padding: 13px 17px;
+    border-radius: 13px;
     cursor: pointer;
     margin: 6px 3px;
     font-size: 15px;
+    transition: 0.2s;
 }
 
-button:hover { background: #542d87; }
+button:hover {
+    background: #613b91;
+    transform: translateY(-2px);
+}
 
 .game-menu button {
     width: 100%;
+    min-height: 65px;
     text-align: left;
-    padding: 16px;
+    font-weight: bold;
+    background: #f0e5ff;
+    color: #513477;
+    border: 2px solid #e3d0fa;
 }
 
-.game {
-    display: none;
+.game-menu button:hover {
+    background: #e2d0fa;
 }
+
+.game { display: none; }
 
 .option {
     display: block;
     width: 100%;
     text-align: left;
-    background: #eee4ff;
+    background: #f2eaff;
     color: #40275f;
-    margin: 9px 0;
+    margin: 10px 0;
+    padding: 15px;
+    border: 2px solid transparent;
 }
 
 .option:hover {
-    background: #d9c5fa;
+    background: #e4d4fa;
+    border-color: #b99cde;
 }
 
 .feedback {
-    background: #f5efff;
-    padding: 13px;
-    border-radius: 10px;
+    background: #f2eaff;
+    padding: 15px;
+    border-radius: 13px;
     margin-top: 15px;
+    line-height: 1.6;
 }
 
 .question {
     font-size: 19px;
     font-weight: bold;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 .small {
     font-size: 13px;
-    color: #62576e;
-}
-
-footer {
-    text-align: center;
-    background: #7044a5;
-    color: white;
-    padding: 18px;
+    color: #74677f;
 }
 
 .plate-choice {
     display: inline-block;
-    background: #eee4ff;
+    background: #f0e5ff;
     color: #40275f;
-    padding: 12px;
-    border-radius: 9px;
-    margin: 5px;
+    padding: 13px;
+    border-radius: 12px;
+    margin: 6px;
+    line-height: 1.5;
 }
 
-.plate-choice input {
-    margin-right: 6px;
+.plate-choice input { margin-right: 6px; }
+
+.score {
+    font-size: 24px;
+    font-weight: bold;
+    color: #8056b5;
 }
 
+.fun-banner {
+    text-align: center;
+    background: #e6f8eb;
+    border-radius: 18px;
+    padding: 20px;
+    line-height: 1.7;
+}
+
+footer {
+    text-align: center;
+    background: #8056b5;
+    color: white;
+    padding: 18px;
+    margin-top: 30px;
+}
+
+@media(max-width:600px) {
+    .navbar { justify-content: center; text-align: center; }
+    .hero h1 { font-size: 29px; }
+    .card { padding: 17px; }
+    .game-menu { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 
 <body>
 
 <nav class="navbar">
-    <div class="logo">TeenWell360 ✳</div>
+    <div class="logo">🍓 TeenWell360</div>
     <div class="nav-links">
         <a href="/">Home</a>
         <a href="/meal-planner">Meal Planner</a>
         <a href="/budget-buddy">Budget Buddy</a>
-        <a href="/food-chatbot">Chatbot</a>
+        <a href="/food-chatbot">Food Buddy</a>
     </div>
 </nav>
 
 <section class="hero">
     <p>🎮 LEARN • PLAY • EXPLORE</p>
-    <h1>Food Games</h1>
-    <p>Discover nutrition through fun challenges!</p>
+    <h1>Food Games!</h1>
+    <p>Ready, Food Explorer? Let's make learning nutrition fun!</p>
+    <div class="mascots">🍓 🥑 🥕 🍌 🥦</div>
 </section>
 
 <main class="container">
 
     <section class="card">
-        <h2>Choose Your Game 💜</h2>
+        <h2>🎯 Choose Your Game</h2>
+        <p>Pick a challenge and test your food knowledge!</p>
 
         <div class="game-menu">
-            <button onclick="showGame('quiz')">
-                🧠 1. Nutrition Quiz
-            </button>
-
-            <button onclick="showGame('guess')">
-                🍎 2. Guess the Food
-            </button>
-
-            <button onclick="showGame('nutrient')">
-                🔍 3. Find the Nutrient
-            </button>
-
-            <button onclick="showGame('truefalse')">
-                ✅ 4. True or False Challenge
-            </button>
-
-            <button onclick="showGame('plate')">
-                🍱 5. Build a Balanced Plate
-            </button>
+            <button onclick="showGame('quiz')">🧠 1. Nutrition Quiz</button>
+            <button onclick="showGame('guess')">🍎 2. Guess the Food</button>
+            <button onclick="showGame('nutrient')">🔍 3. Find the Nutrient</button>
+            <button onclick="showGame('truefalse')">✅ 4. True or False</button>
+            <button onclick="showGame('plate')">🍱 5. Build a Balanced Plate</button>
         </div>
     </section>
-
-    <!-- GAME 1 -->
 
     <section class="card game" id="quiz">
         <h2>🧠 Nutrition Quiz</h2>
@@ -192,13 +228,9 @@ footer {
         <p id="quizQuestion" class="question"></p>
         <div id="quizOptions"></div>
         <div id="quizFeedback" class="feedback" hidden></div>
-        <button id="quizNext" onclick="nextQuiz()" hidden>
-            Next Question →
-        </button>
-        <button onclick="startQuiz()">Restart Quiz</button>
+        <button id="quizNext" onclick="nextQuiz()" hidden>Next Question →</button>
+        <button onclick="startQuiz()">↻ Restart Quiz</button>
     </section>
-
-    <!-- GAME 2 -->
 
     <section class="card game" id="guess">
         <h2>🍎 Guess the Food</h2>
@@ -206,13 +238,9 @@ footer {
         <p id="guessClue" class="question"></p>
         <div id="guessOptions"></div>
         <div id="guessFeedback" class="feedback" hidden></div>
-        <button id="guessNext" onclick="nextGuess()" hidden>
-            Next Food →
-        </button>
-        <button onclick="startGuess()">Restart Game</button>
+        <button id="guessNext" onclick="nextGuess()" hidden>Next Food →</button>
+        <button onclick="startGuess()">↻ Restart Game</button>
     </section>
-
-    <!-- GAME 3 -->
 
     <section class="card game" id="nutrient">
         <h2>🔍 Find the Nutrient</h2>
@@ -220,79 +248,55 @@ footer {
         <p id="nutrientQuestion" class="question"></p>
         <div id="nutrientOptions"></div>
         <div id="nutrientFeedback" class="feedback" hidden></div>
-        <button id="nutrientNext" onclick="nextNutrient()" hidden>
-            Next Challenge →
-        </button>
-        <button onclick="startNutrient()">Restart Game</button>
+        <button id="nutrientNext" onclick="nextNutrient()" hidden>Next Challenge →</button>
+        <button onclick="startNutrient()">↻ Restart Game</button>
     </section>
 
-    <!-- GAME 4 -->
-
     <section class="card game" id="truefalse">
-        <h2>✅ True or False Challenge</h2>
+        <h2>✅ True or False</h2>
         <p id="tfProgress" class="small"></p>
         <p id="tfQuestion" class="question"></p>
         <div id="tfOptions"></div>
         <div id="tfFeedback" class="feedback" hidden></div>
-        <button id="tfNext" onclick="nextTF()" hidden>
-            Next Statement →
-        </button>
-        <button onclick="startTF()">Restart Game</button>
+        <button id="tfNext" onclick="nextTF()" hidden>Next Statement →</button>
+        <button onclick="startTF()">↻ Restart Game</button>
     </section>
-
-    <!-- GAME 5 -->
 
     <section class="card game" id="plate">
         <h2>🍱 Build a Balanced Plate</h2>
-        <p>Select foods from different food groups to create a varied meal.</p>
+        <p>Choose foods from different food groups to create a varied meal.</p>
 
-        <label class="plate-choice">
-            <input type="checkbox" name="plate" value="grain">
-            Rice / Chapati / Millet
-        </label>
+        <label class="plate-choice"><input type="checkbox" name="plate" value="grain"> 🌾 Rice / Chapati / Millet</label>
+        <label class="plate-choice"><input type="checkbox" name="plate" value="protein"> 🫘 Dal / Beans / Egg / Paneer</label>
+        <label class="plate-choice"><input type="checkbox" name="plate" value="vegetable"> 🥦 Vegetables</label>
+        <label class="plate-choice"><input type="checkbox" name="plate" value="fruit"> 🍎 Fruits</label>
+        <label class="plate-choice"><input type="checkbox" name="plate" value="dairy"> 🥛 Milk / Curd / Fortified Alternative</label>
 
-        <label class="plate-choice">
-            <input type="checkbox" name="plate" value="protein">
-            Dal / Beans / Egg / Paneer
-        </label>
-
-        <label class="plate-choice">
-            <input type="checkbox" name="plate" value="vegetable">
-            Vegetables
-        </label>
-
-        <label class="plate-choice">
-            <input type="checkbox" name="plate" value="fruit">
-            Fruits
-        </label>
-
-        <label class="plate-choice">
-            <input type="checkbox" name="plate" value="dairy">
-            Milk / Curd / Fortified Alternative
-        </label>
-
-        <button onclick="checkPlate()">Check My Plate</button>
-        <button onclick="resetPlate()">Reset</button>
+        <br>
+        <button onclick="checkPlate()">Check My Plate ✨</button>
+        <button onclick="resetPlate()">↻ Reset</button>
 
         <div id="plateFeedback" class="feedback" hidden></div>
     </section>
 
     <section class="card">
-        <h2>🌟 Why Play Food Games?</h2>
-        <p>• Learn about nutrients and food groups.</p>
-        <p>• Explore different foods.</p>
-        <p>• Understand balanced meals.</p>
-        <p>• Improve your nutrition knowledge.</p>
+        <div class="fun-banner">
+            <h2>🌟 Why Play Food Games?</h2>
+            <p>🍊 Discover different foods and nutrients.</p>
+            <p>🥕 Learn about food groups.</p>
+            <p>🍱 Explore balanced meals.</p>
+            <p>💜 Make nutrition learning enjoyable!</p>
+        </div>
     </section>
 
 </main>
 
 <footer>
     <p>Made with 💜 by TeenWell360</p>
+    <p>Good Vibes. Great Bites!</p>
 </footer>
 
 <script>
-
 let activeGame = null;
 
 function showGame(id) {
@@ -309,9 +313,7 @@ function showGame(id) {
     if (id === "truefalse") startTF();
     if (id === "plate") resetPlate();
 
-    document.getElementById(id).scrollIntoView({
-        behavior: "smooth"
-    });
+    document.getElementById(id).scrollIntoView({behavior:"smooth"});
 }
 
 function showFeedback(id, message) {
@@ -321,411 +323,236 @@ function showFeedback(id, message) {
 }
 
 // GAME 1: QUIZ
-
 const quizData = [
-    {
-        q: "Which vitamin is found in oranges?",
-        o: ["Vitamin A", "Vitamin C", "Vitamin D"],
-        a: 1,
-        e: "Oranges contain vitamin C."
-    },
-    {
-        q: "Which nutrient helps build and repair tissues?",
-        o: ["Protein", "Water", "Fibre"],
-        a: 0,
-        e: "Protein supports growth and tissue repair."
-    },
-    {
-        q: "Which mineral supports bones and teeth?",
-        o: ["Iron", "Calcium", "Sodium"],
-        a: 1,
-        e: "Calcium supports healthy bones and teeth."
-    },
-    {
-        q: "Which food is rich in dietary fibre?",
-        o: ["Whole grains", "Sugar", "Butter"],
-        a: 0,
-        e: "Whole grains are useful sources of fibre."
-    },
-    {
-        q: "Which nutrient provides energy?",
-        o: ["Carbohydrates", "Water", "Vitamin C"],
-        a: 0,
-        e: "Carbohydrates are an important energy source."
-    }
+    {q:"Which vitamin is found in oranges?",o:["Vitamin A","Vitamin C","Vitamin D"],a:1,e:"Oranges contain vitamin C."},
+    {q:"Which nutrient helps build and repair tissues?",o:["Protein","Water","Fibre"],a:0,e:"Protein supports growth and tissue repair."},
+    {q:"Which mineral supports bones and teeth?",o:["Iron","Calcium","Sodium"],a:1,e:"Calcium supports healthy bones and teeth."},
+    {q:"Which food is rich in dietary fibre?",o:["Whole grains","Sugar","Butter"],a:0,e:"Whole grains are useful sources of fibre."},
+    {q:"Which nutrient provides energy?",o:["Carbohydrates","Water","Vitamin C"],a:0,e:"Carbohydrates are an important energy source."}
 ];
 
-let qi = 0;
-let qscore = 0;
-let qanswered = false;
+let qi=0,qscore=0,qanswered=false;
 
-function startQuiz() {
-    qi = 0;
-    qscore = 0;
-    qanswered = false;
-    showQuiz();
-}
+function startQuiz(){qi=0;qscore=0;showQuiz();}
 
-function showQuiz() {
-    qanswered = false;
-    const q = quizData[qi];
-
-    document.getElementById("quizProgress").textContent =
-        "Question " + (qi + 1) + " of " + quizData.length;
-
-    document.getElementById("quizQuestion").textContent = q.q;
-    document.getElementById("quizFeedback").hidden = true;
-    document.getElementById("quizNext").hidden = true;
-
-    const box = document.getElementById("quizOptions");
-    box.innerHTML = "";
-
-    q.o.forEach((option, index) => {
-        const btn = document.createElement("button");
-        btn.className = "option";
-        btn.textContent = option;
-        btn.onclick = () => answerQuiz(index);
+function showQuiz(){
+    qanswered=false;
+    const q=quizData[qi];
+    document.getElementById("quizProgress").textContent="Question "+(qi+1)+" of "+quizData.length;
+    document.getElementById("quizQuestion").textContent=q.q;
+    document.getElementById("quizFeedback").hidden=true;
+    document.getElementById("quizNext").hidden=true;
+    const box=document.getElementById("quizOptions");
+    box.innerHTML="";
+    q.o.forEach((option,index)=>{
+        const btn=document.createElement("button");
+        btn.className="option";
+        btn.textContent=option;
+        btn.onclick=()=>answerQuiz(index);
         box.appendChild(btn);
     });
 }
 
-function answerQuiz(index) {
-    if (qanswered) return;
-    qanswered = true;
-
-    const q = quizData[qi];
-    const correct = index === q.a;
-
-    if (correct) qscore++;
-
-    showFeedback(
-        "quizFeedback",
-        (correct ? "🎉 Correct! " : "💡 Not quite. ") + q.e
-    );
-
-    document.getElementById("quizNext").hidden = false;
-    document.getElementById("quizNext").textContent =
-        qi === quizData.length - 1 ? "See My Score" : "Next Question →";
+function answerQuiz(index){
+    if(qanswered)return;
+    qanswered=true;
+    const q=quizData[qi];
+    const correct=index===q.a;
+    if(correct)qscore++;
+    showFeedback("quizFeedback",(correct?"🎉 Correct! ":"💡 Not quite. ")+q.e);
+    document.getElementById("quizNext").hidden=false;
+    document.getElementById("quizNext").textContent=qi===quizData.length-1?"See My Score":"Next Question →";
 }
 
-function nextQuiz() {
-    if (!qanswered) return;
-
+function nextQuiz(){
+    if(!qanswered)return;
     qi++;
-
-    if (qi < quizData.length) {
-        showQuiz();
-    } else {
-        document.getElementById("quizQuestion").textContent =
-            "You scored " + qscore + " out of " + quizData.length + "! 🌟";
-
-        document.getElementById("quizOptions").innerHTML = "";
-        document.getElementById("quizFeedback").hidden = true;
-        document.getElementById("quizNext").hidden = true;
+    if(qi<quizData.length){showQuiz();}
+    else{
+        document.getElementById("quizQuestion").innerHTML='<span class="score">🌟 You scored '+qscore+' out of '+quizData.length+'!</span>';
+        document.getElementById("quizOptions").innerHTML="";
+        document.getElementById("quizFeedback").hidden=true;
+        document.getElementById("quizNext").hidden=true;
     }
 }
 
 // GAME 2: GUESS THE FOOD
-
-const guessData = [
-    {
-        clue: "I am yellow, soft and curved. Monkeys are often shown eating me. Who am I?",
-        options: ["Banana", "Apple", "Carrot"],
-        answer: "Banana"
-    },
-    {
-        clue: "I am orange and crunchy. I contain beta-carotene. Who am I?",
-        options: ["Cucumber", "Carrot", "Grapes"],
-        answer: "Carrot"
-    },
-    {
-        clue: "I am a dairy food made by fermenting milk. Who am I?",
-        options: ["Curd", "Rice", "Potato"],
-        answer: "Curd"
-    }
+const guessData=[
+    {clue:"I am yellow, soft and curved. Monkeys are often shown eating me. Who am I?",options:["Banana","Apple","Carrot"],answer:"Banana"},
+    {clue:"I am orange and crunchy. I contain beta-carotene. Who am I?",options:["Cucumber","Carrot","Grapes"],answer:"Carrot"},
+    {clue:"I am a dairy food made by fermenting milk. Who am I?",options:["Curd","Rice","Potato"],answer:"Curd"}
 ];
 
-let gi = 0;
-let ganswered = false;
+let gi=0,ganswered=false;
 
-function startGuess() {
-    gi = 0;
-    showGuess();
-}
+function startGuess(){gi=0;showGuess();}
 
-function showGuess() {
-    ganswered = false;
-    const item = guessData[gi];
-
-    document.getElementById("guessProgress").textContent =
-        "Food " + (gi + 1) + " of " + guessData.length;
-
-    document.getElementById("guessClue").textContent = item.clue;
-    document.getElementById("guessFeedback").hidden = true;
-    document.getElementById("guessNext").hidden = true;
-
-    const box = document.getElementById("guessOptions");
-    box.innerHTML = "";
-
-    item.options.forEach(option => {
-        const btn = document.createElement("button");
-        btn.className = "option";
-        btn.textContent = option;
-        btn.onclick = () => answerGuess(option);
+function showGuess(){
+    ganswered=false;
+    const item=guessData[gi];
+    document.getElementById("guessProgress").textContent="Food "+(gi+1)+" of "+guessData.length;
+    document.getElementById("guessClue").textContent=item.clue;
+    document.getElementById("guessFeedback").hidden=true;
+    document.getElementById("guessNext").hidden=true;
+    const box=document.getElementById("guessOptions");
+    box.innerHTML="";
+    item.options.forEach(option=>{
+        const btn=document.createElement("button");
+        btn.className="option";
+        btn.textContent=option;
+        btn.onclick=()=>answerGuess(option);
         box.appendChild(btn);
     });
 }
 
-function answerGuess(option) {
-    if (ganswered) return;
-    ganswered = true;
-
-    const correct = option === guessData[gi].answer;
-
-    showFeedback(
-        "guessFeedback",
-        correct
-        ? "🎉 Correct! The answer is " + guessData[gi].answer + "."
-        : "The correct answer is " + guessData[gi].answer + ". Keep learning!"
-    );
-
-    document.getElementById("guessNext").hidden = false;
+function answerGuess(option){
+    if(ganswered)return;
+    ganswered=true;
+    const correct=option===guessData[gi].answer;
+    showFeedback("guessFeedback",correct?"🎉 Correct! The answer is "+guessData[gi].answer+".":"The correct answer is "+guessData[gi].answer+". Keep learning!");
+    document.getElementById("guessNext").hidden=false;
 }
 
-function nextGuess() {
-    if (!ganswered) return;
+function nextGuess(){
+    if(!ganswered)return;
     gi++;
-
-    if (gi < guessData.length) {
-        showGuess();
-    } else {
-        document.getElementById("guessClue").textContent =
-            "🎉 You completed Guess the Food!";
-        document.getElementById("guessOptions").innerHTML = "";
-        document.getElementById("guessFeedback").hidden = true;
-        document.getElementById("guessNext").hidden = true;
+    if(gi<guessData.length)showGuess();
+    else{
+        document.getElementById("guessClue").textContent="🎉 You completed Guess the Food!";
+        document.getElementById("guessOptions").innerHTML="";
+        document.getElementById("guessFeedback").hidden=true;
+        document.getElementById("guessNext").hidden=true;
     }
 }
 
 // GAME 3: FIND THE NUTRIENT
-
-const nutrientData = [
-    {
-        q: "Milk is a useful source of which mineral?",
-        o: ["Calcium", "Iron", "Iodine"],
-        a: "Calcium"
-    },
-    {
-        q: "Eggs provide which important nutrient?",
-        o: ["Protein", "Vitamin C", "Fibre"],
-        a: "Protein"
-    },
-    {
-        q: "Amla is rich in which vitamin?",
-        o: ["Vitamin D", "Vitamin C", "Vitamin B12"],
-        a: "Vitamin C"
-    },
-    {
-        q: "Lentils are a source of which mineral?",
-        o: ["Iron", "Fluoride", "Sodium"],
-        a: "Iron"
-    }
+const nutrientData=[
+    {q:"Milk is a useful source of which mineral?",o:["Calcium","Iron","Iodine"],a:"Calcium"},
+    {q:"Eggs provide which important nutrient?",o:["Protein","Vitamin C","Fibre"],a:"Protein"},
+    {q:"Amla is rich in which vitamin?",o:["Vitamin D","Vitamin C","Vitamin B12"],a:"Vitamin C"},
+    {q:"Lentils are a source of which mineral?",o:["Iron","Fluoride","Sodium"],a:"Iron"}
 ];
 
-let ni = 0;
-let nanswered = false;
+let ni=0,nanswered=false;
 
-function startNutrient() {
-    ni = 0;
-    showNutrient();
-}
+function startNutrient(){ni=0;showNutrient();}
 
-function showNutrient() {
-    nanswered = false;
-    const item = nutrientData[ni];
-
-    document.getElementById("nutrientProgress").textContent =
-        "Challenge " + (ni + 1) + " of " + nutrientData.length;
-
-    document.getElementById("nutrientQuestion").textContent = item.q;
-    document.getElementById("nutrientFeedback").hidden = true;
-    document.getElementById("nutrientNext").hidden = true;
-
-    const box = document.getElementById("nutrientOptions");
-    box.innerHTML = "";
-
-    item.o.forEach(option => {
-        const btn = document.createElement("button");
-        btn.className = "option";
-        btn.textContent = option;
-        btn.onclick = () => answerNutrient(option);
+function showNutrient(){
+    nanswered=false;
+    const item=nutrientData[ni];
+    document.getElementById("nutrientProgress").textContent="Challenge "+(ni+1)+" of "+nutrientData.length;
+    document.getElementById("nutrientQuestion").textContent=item.q;
+    document.getElementById("nutrientFeedback").hidden=true;
+    document.getElementById("nutrientNext").hidden=true;
+    const box=document.getElementById("nutrientOptions");
+    box.innerHTML="";
+    item.o.forEach(option=>{
+        const btn=document.createElement("button");
+        btn.className="option";
+        btn.textContent=option;
+        btn.onclick=()=>answerNutrient(option);
         box.appendChild(btn);
     });
 }
 
-function answerNutrient(option) {
-    if (nanswered) return;
-    nanswered = true;
-
-    const answer = nutrientData[ni].a;
-
-    showFeedback(
-        "nutrientFeedback",
-        option === answer
-        ? "🎉 Correct! " + answer + " is the answer."
-        : "The correct answer is " + answer + "."
-    );
-
-    document.getElementById("nutrientNext").hidden = false;
+function answerNutrient(option){
+    if(nanswered)return;
+    nanswered=true;
+    const answer=nutrientData[ni].a;
+    showFeedback("nutrientFeedback",option===answer?"🎉 Correct! "+answer+" is the answer.":"The correct answer is "+answer+".");
+    document.getElementById("nutrientNext").hidden=false;
 }
 
-function nextNutrient() {
-    if (!nanswered) return;
+function nextNutrient(){
+    if(!nanswered)return;
     ni++;
-
-    if (ni < nutrientData.length) {
-        showNutrient();
-    } else {
-        document.getElementById("nutrientQuestion").textContent =
-            "🌟 You completed Find the Nutrient!";
-        document.getElementById("nutrientOptions").innerHTML = "";
-        document.getElementById("nutrientFeedback").hidden = true;
-        document.getElementById("nutrientNext").hidden = true;
+    if(ni<nutrientData.length)showNutrient();
+    else{
+        document.getElementById("nutrientQuestion").textContent="🌟 You completed Find the Nutrient!";
+        document.getElementById("nutrientOptions").innerHTML="";
+        document.getElementById("nutrientFeedback").hidden=true;
+        document.getElementById("nutrientNext").hidden=true;
     }
 }
 
 // GAME 4: TRUE OR FALSE
-
-const tfData = [
-    {
-        q: "Fruits and vegetables provide vitamins and minerals.",
-        a: true,
-        e: "They provide a variety of vitamins, minerals and fibre."
-    },
-    {
-        q: "Water is important for normal body functions.",
-        a: true,
-        e: "Water supports digestion and temperature regulation."
-    },
-    {
-        q: "All fats are bad for the body.",
-        a: false,
-        e: "Dietary fats are essential for normal body functions."
-    },
-    {
-        q: "Handwashing helps prevent food contamination.",
-        a: true,
-        e: "Proper handwashing is an important food safety practice."
-    },
-    {
-        q: "Different foods provide different nutrients.",
-        a: true,
-        e: "Eating a variety of foods helps provide different nutrients."
-    }
+const tfData=[
+    {q:"Fruits and vegetables provide vitamins and minerals.",a:true,e:"They provide a variety of vitamins, minerals and fibre."},
+    {q:"Water is important for normal body functions.",a:true,e:"Water supports digestion and temperature regulation."},
+    {q:"All fats are bad for the body.",a:false,e:"Dietary fats are essential for normal body functions."},
+    {q:"Handwashing helps prevent food contamination.",a:true,e:"Proper handwashing is an important food safety practice."},
+    {q:"Different foods provide different nutrients.",a:true,e:"Eating a variety of foods helps provide different nutrients."}
 ];
 
-let ti = 0;
-let tanswered = false;
+let ti=0,tanswered=false;
 
-function startTF() {
-    ti = 0;
-    showTF();
-}
+function startTF(){ti=0;showTF();}
 
-function showTF() {
-    tanswered = false;
-    const item = tfData[ti];
-
-    document.getElementById("tfProgress").textContent =
-        "Statement " + (ti + 1) + " of " + tfData.length;
-
-    document.getElementById("tfQuestion").textContent = item.q;
-    document.getElementById("tfFeedback").hidden = true;
-    document.getElementById("tfNext").hidden = true;
-
-    const box = document.getElementById("tfOptions");
-    box.innerHTML = "";
-
-    [true, false].forEach(value => {
-        const btn = document.createElement("button");
-        btn.className = "option";
-        btn.textContent = value ? "TRUE" : "FALSE";
-        btn.onclick = () => answerTF(value);
+function showTF(){
+    tanswered=false;
+    const item=tfData[ti];
+    document.getElementById("tfProgress").textContent="Statement "+(ti+1)+" of "+tfData.length;
+    document.getElementById("tfQuestion").textContent=item.q;
+    document.getElementById("tfFeedback").hidden=true;
+    document.getElementById("tfNext").hidden=true;
+    const box=document.getElementById("tfOptions");
+    box.innerHTML="";
+    [true,false].forEach(value=>{
+        const btn=document.createElement("button");
+        btn.className="option";
+        btn.textContent=value?"TRUE":"FALSE";
+        btn.onclick=()=>answerTF(value);
         box.appendChild(btn);
     });
 }
 
-function answerTF(value) {
-    if (tanswered) return;
-    tanswered = true;
-
-    const item = tfData[ti];
-
-    showFeedback(
-        "tfFeedback",
-        value === item.a
-        ? "🎉 Correct! " + item.e
-        : "💡 The correct answer is " +
-          (item.a ? "TRUE. " : "FALSE. ") + item.e
-    );
-
-    document.getElementById("tfNext").hidden = false;
+function answerTF(value){
+    if(tanswered)return;
+    tanswered=true;
+    const item=tfData[ti];
+    showFeedback("tfFeedback",value===item.a?"🎉 Correct! "+item.e:"💡 The correct answer is "+(item.a?"TRUE. ":"FALSE. ")+item.e);
+    document.getElementById("tfNext").hidden=false;
 }
 
-function nextTF() {
-    if (!tanswered) return;
+function nextTF(){
+    if(!tanswered)return;
     ti++;
-
-    if (ti < tfData.length) {
-        showTF();
-    } else {
-        document.getElementById("tfQuestion").textContent =
-            "🎉 You completed the True or False Challenge!";
-        document.getElementById("tfOptions").innerHTML = "";
-        document.getElementById("tfFeedback").hidden = true;
-        document.getElementById("tfNext").hidden = true;
+    if(ti<tfData.length)showTF();
+    else{
+        document.getElementById("tfQuestion").textContent="🎉 You completed the True or False Challenge!";
+        document.getElementById("tfOptions").innerHTML="";
+        document.getElementById("tfFeedback").hidden=true;
+        document.getElementById("tfNext").hidden=true;
     }
 }
 
 // GAME 5: BUILD A BALANCED PLATE
+function checkPlate(){
+    const selected=Array.from(document.querySelectorAll('input[name="plate"]:checked')).map(item=>item.value);
+    const feedback=document.getElementById("plateFeedback");
+    feedback.hidden=false;
+    const hasGrain=selected.includes("grain");
+    const hasProtein=selected.includes("protein");
+    const hasProduce=selected.includes("vegetable")||selected.includes("fruit");
 
-function checkPlate() {
-    const selected = Array.from(
-        document.querySelectorAll('input[name="plate"]:checked')
-    ).map(item => item.value);
-
-    const feedback = document.getElementById("plateFeedback");
-    feedback.hidden = false;
-
-    const hasGrain = selected.includes("grain");
-    const hasProtein = selected.includes("protein");
-    const hasProduce =
-        selected.includes("vegetable") ||
-        selected.includes("fruit");
-
-    if (selected.length === 0) {
-        feedback.textContent = "Choose some food groups first!";
-    } else if (hasGrain && hasProtein && hasProduce && selected.length >= 3) {
-        feedback.textContent =
-            "🎉 Great job! Your meal includes grains, protein and fruit or vegetables. You can add other food groups for more variety.";
-    } else {
-        feedback.textContent =
-            "💡 Good start! Try including a grain, a protein food and vegetables or fruit to create a more varied meal.";
+    if(selected.length===0){
+        feedback.textContent="Choose some food groups first!";
+    }else if(hasGrain&&hasProtein&&hasProduce&&selected.length>=3){
+        feedback.textContent="🎉 Great job! Your meal includes grains, protein and fruit or vegetables. You can add other food groups for more variety.";
+    }else{
+        feedback.textContent="💡 Good start! Try including a grain, a protein food and vegetables or fruit to create a more varied meal.";
     }
 }
 
-function resetPlate() {
-    document.querySelectorAll('input[name="plate"]').forEach(item => {
-        item.checked = false;
-    });
-
-    document.getElementById("plateFeedback").hidden = true;
+function resetPlate(){
+    document.querySelectorAll('input[name="plate"]').forEach(item=>item.checked=false);
+    document.getElementById("plateFeedback").hidden=true;
 }
-
 </script>
 
 </body>
 </html>
 
-        
+                        
+            
             
