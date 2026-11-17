@@ -152,25 +152,22 @@ body {
 }
 
 .character {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    width: 100%;
-    max-width: 300px;
-    margin: 20px auto;
     overflow: hidden;
+    margin: 0 auto 17px;
 }
 
 .sticker-image {
     display: block;
     width: 100%;
-    max-width: 250px;
+    max-width: 220px;
+    max-height: 220px;
     height: auto;
-    margin: auto;
     object-fit: contain;
-    position: static;
+    margin: auto;
 }
 /* FEATURES */
 
