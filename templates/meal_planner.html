@@ -29,18 +29,36 @@ href="{{ url_for('static', filename='css/style.css') }}">
 }
 
 .meal-mascots {
-    background: white;
-    border: 4px solid white;
-    padding: 25px;
+    background: linear-gradient(135deg, #fff, #f4eaff);
+    border: 3px solid white;
+    padding: 28px;
     border-radius: 30px;
-    font-size: 45px;
+    font-size: 42px;
+    text-align: center;
     box-shadow: 0 8px 20px rgba(80,50,100,.1);
+    max-width: 100%;
+}
+
+.meal-character {
+    margin-bottom: 12px;
+    animation: mealBounce 2s ease-in-out infinite;
 }
 
 .meal-mascots p {
-    font-size: 15px;
+    font-size: 16px;
     color: #8055b5;
     font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.meal-mascots small {
+    color: #bd6d9d;
+    font-size: 13px;
+}
+
+@keyframes mealBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
 }
 
 .meal-controls {
@@ -120,9 +138,10 @@ href="{{ url_for('static', filename='css/style.css') }}">
     </div>
 
     <div class="meal-mascots">
-        <div>🥑 🍓 🥦 🍌</div>
-        <p>Your Food Pals say hello!</p>
-    </div>
+    <div class="meal-character">🥑 🍓 🥦 🍌</div>
+    <p>Your Food Pals say hello!</p>
+    <small>Let's make food fun! ✨</small>
+</div>
 </section>
 
 <section class="features" id="meals">
