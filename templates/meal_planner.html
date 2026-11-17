@@ -110,7 +110,16 @@ href="{{ url_for('static', filename='css/style.css') }}">
     text-align: center;
     margin-bottom: 20px;
 }
-
+.success-message {
+    text-align: center;
+    color: #a16bb5;
+    font-size: 14px;
+    font-weight: bold;
+    background: #fff;
+    padding: 12px;
+    border-radius: 15px;
+    margin-bottom: 18px;
+}
 .meal-result-card p {
     background: rgba(255,255,255,0.9);
     padding: 16px;
@@ -182,10 +191,7 @@ href="{{ url_for('static', filename='css/style.css') }}">
 
         <br>
 
-        <button onclick="generateMeals()" class="btn">
-            ✨ Generate My Meal Plan
-        </button>
-
+        <button onclick="generateMeals()">✨ Generate Another Plan</button>
     </div>
 
     <div id="meal-result" aria-live="polite"></div>
