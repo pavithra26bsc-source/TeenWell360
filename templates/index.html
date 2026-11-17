@@ -2,94 +2,437 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>TeenWell360 | Good Vibes. Great Bites.</title>
+<title>TeenWell360 | Good Vibes. Great Bites.</title>
 
-    <link rel="stylesheet"
-    href="{{ url_for('static', filename='css/style.css') }}">
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    background: #fffaf5;
+    color: #403653;
+}
+
+/* NAVBAR */
+
+.navbar {
+    background: #ffffff;
+    padding: 17px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    box-shadow: 0 3px 15px rgba(70, 50, 90, 0.07);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #7953ae;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #55466a;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #a16bd2;
+}
+
+/* HERO */
+
+.hero {
+    background: linear-gradient(135deg, #e9ddff, #e0f8ed, #fff0dc);
+    padding: 75px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 35px;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 530px;
+}
+
+.tag {
+    display: inline-block;
+    background: white;
+    color: #8056b3;
+    padding: 10px 17px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 22px;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 7vw, 68px);
+    line-height: 1.12;
+    color: #68459b;
+    margin-bottom: 20px;
+}
+
+.hero-content > p:not(.tag) {
+    font-size: 17px;
+    line-height: 1.8;
+    color: #62566f;
+    margin-bottom: 27px;
+}
+
+.btn {
+    display: inline-block;
+    background: #8056b3;
+    color: white;
+    text-decoration: none;
+    padding: 16px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(100, 65, 145, 0.2);
+}
+
+.btn:hover {
+    background: #654090;
+    transform: translateY(-4px);
+}
+
+/* FOOD MASCOT */
+
+.mascot {
+    background: rgba(255,255,255,0.8);
+    border: 3px solid white;
+    border-radius: 35px;
+    padding: 40px 25px;
+    text-align: center;
+    min-width: 250px;
+    box-shadow: 0 12px 30px rgba(90, 65, 120, 0.10);
+    animation: float 3s ease-in-out infinite;
+}
+
+.food-icons {
+    font-size: 65px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.mascot p {
+    color: #7953ae;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.mascot small {
+    display: block;
+    margin-top: 9px;
+    color: #776b83;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* FEATURES */
+
+.features {
+    padding: 65px 7%;
+    text-align: center;
+}
+
+.section-tag {
+    color: #9a73c2;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.features h2 {
+    font-size: 34px;
+    color: #65458f;
+    margin-bottom: 12px;
+}
+
+.section-description {
+    color: #766b80;
+    margin-bottom: 38px;
+    line-height: 1.7;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 23px;
+    max-width: 1050px;
+    margin: auto;
+}
+
+.card {
+    display: block;
+    text-align: left;
+    text-decoration: none;
+    padding: 28px;
+    border-radius: 24px;
+    color: #403653;
+    border: 2px solid transparent;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(80, 60, 100, 0.12);
+    border-color: white;
+}
+
+.card:nth-child(1) {
+    background: #e9ddff;
+}
+
+.card:nth-child(2) {
+    background: #ffebd9;
+}
+
+.card:nth-child(3) {
+    background: #ddf5e8;
+}
+
+.card:nth-child(4) {
+    background: #ffe3ed;
+}
+
+.emoji {
+    width: 75px;
+    height: 75px;
+    display: grid;
+    place-items: center;
+    background: rgba(255,255,255,0.8);
+    border-radius: 22px;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #65458f;
+}
+
+.card p {
+    line-height: 1.7;
+    color: #665c70;
+}
+
+.explore {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #7651a4;
+}
+
+/* BOTTOM MESSAGE */
+
+.motivation {
+    background: #f0e9ff;
+    margin: 15px 7% 60px;
+    padding: 35px 20px;
+    text-align: center;
+    border-radius: 25px;
+}
+
+.motivation h2 {
+    color: #7651a4;
+    margin-bottom: 12px;
+}
+
+.motivation p {
+    color: #655a70;
+    line-height: 1.7;
+}
+
+/* FOOTER */
+
+footer {
+    background: #684795;
+    color: white;
+    text-align: center;
+    padding: 28px 15px;
+    line-height: 2;
+}
+
+footer p:last-child {
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+/* MOBILE */
+
+@media(max-width: 650px) {
+
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nav-links {
+        gap: 17px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero {
+        text-align: center;
+        justify-content: center;
+        padding: 55px 7%;
+    }
+
+    .hero-content {
+        margin: auto;
+    }
+
+    .mascot {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .features h2 {
+        font-size: 28px;
+    }
+
+    .motivation {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <nav class="navbar">
-        <div class="logo">TeenWell360 ✳</div>
+<nav class="navbar">
+    <div class="logo">TeenWell360 ✳</div>
 
-        <div class="nav-links">
-            <a href="#">Home</a>
-            <a href="#features">Explore</a>
-            <a href="#about">About</a>
-        </div>
-    </nav>
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="#features">Explore</a>
+        <a href="#about">About</a>
+    </div>
+</nav>
 
-    <section class="hero">
+<section class="hero">
 
-        <div class="hero-content">
+    <div class="hero-content">
 
-            <p class="tag">💜 YOUR FOOD COMPANION</p>
+        <p class="tag">💜 YOUR FOOD COMPANION</p>
 
-            <h1>Good Vibes.<br>Great Bites.</h1>
+        <h1>Good Vibes.<br>Great Bites.</h1>
 
-            <p>
-                Discover delicious meals, explore nutrition
-                and find affordable food choices.
-                Your food journey starts here!
-            </p>
+        <p>
+            Food, fun and wellness — all in one place!
+            Discover delicious meals, play nutrition games
+            and explore smart food choices.
+            Your food adventure starts here!
+        </p>
 
-            <a href="#features" class="btn">
-                Explore Your Food World →
-            </a>
+        <a href="#features" class="btn">
+            Explore Your Food World →
+        </a>
 
-        </div>
+    </div>
 
-        <div class="mascot">
-            🍓 🥑 🥦
-            <p>Heyyy, Food Explorer! 👋</p>
-        </div>
+    <div class="mascot">
+        <div class="food-icons">🍓 🥑 🥦</div>
+        <p>Heyyy, Food Explorer! 👋</p>
+        <small>Let's make food fun together!</small>
+    </div>
 
-    </section>
+</section>
 
-    <section class="features" id="features">
+<section class="features" id="features">
 
-        <h2>What's your food mood? 👀</h2>
+    <p class="section-tag">YOUR LITTLE FOOD UNIVERSE</p>
 
-        <div class="cards">
+    <h2>What's Your Food Mood? 👀</h2>
 
-           <a href="{{ url_for('meal_planner') }}" class="card">
-    <div class="emoji">🍜</div>
-    <h3>Meal Planner</h3>
-    <p>Discover tasty daily meal ideas.</p>
-</a>
+    <p class="section-description">
+        Pick your favourite activity and start exploring!
+    </p>
 
-        
-<a href="/budget-buddy" class="card">
-    <div class="emoji">💸</div>
-    <h3>Budget Buddy</h3>
-    <p>Find nutritious food within your budget.</p>
-</a>
+    <div class="cards">
 
+        <a href="{{ url_for('meal_planner') }}" class="card">
+            <div class="emoji">🍜</div>
+            <h3>Meal Planner</h3>
+            <p>Discover tasty meal ideas and build balanced meals.</p>
+            <span class="explore">Explore Meals →</span>
+        </a>
 
-            <a href="{{ url_for('food_games') }}" class="card">
-    <div class="emoji">🎮</div>
-    <h3>Food Games</h3>
-    <p>Learn nutrition through fun challenges.</p>
-</a>
+        <a href="{{ url_for('budget_buddy') }}" class="card">
+            <div class="emoji">💸</div>
+            <h3>Budget Buddy</h3>
+            <p>Discover affordable food choices and smart meal ideas.</p>
+            <span class="explore">Plan Your Budget →</span>
+        </a>
+
+        <a href="{{ url_for('food_games') }}" class="card">
+            <div class="emoji">🎮</div>
+            <h3>Food Games</h3>
+            <p>Play fun challenges and discover interesting food facts.</p>
+            <span class="explore">Play Games →</span>
+        </a>
 
         <a href="{{ url_for('food_chatbot') }}" class="card">
-    <div class="emoji">🤖</div>
-    <h3>Food Chatbot</h3>
-    <p>Ask questions and explore healthy eating.</p>
-</a>
+            <div class="emoji">🤖</div>
+            <h3>Food Buddy</h3>
+            <p>Ask food questions and learn about nutrition.</p>
+            <span class="explore">Chat Now →</span>
+        </a>
 
-        </div>
+    </div>
 
-    </section>
+</section>
 
-    <footer id="about">
-        <p>Made with 💜 for a healthier generation.</p>
-        <p>TeenWell360 © 2026</p>
-    </footer>
+<section class="motivation">
+    <h2>🌈 Small Steps. Bright Futures!</h2>
+    <p>
+        Explore new foods, learn something interesting
+        and enjoy your food journey.
+        Every little step counts!
+    </p>
+</section>
+
+<footer id="about">
+    <p>Made with 💜 for a healthier generation.</p>
+    <p>TeenWell360 © 2026 | Eat Well. Feel Well. Live Well.</p>
+</footer>
 
 </body>
 </html>
+
+ 
